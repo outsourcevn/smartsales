@@ -15,11 +15,16 @@ public class SonHaDispatcherActivity extends AppCompatActivity {
         PreferenceUtils.init(this);
 
         boolean isLoggedIn = PreferenceUtils.getBoolean(PrefsKey.KEY_IS_LOGGED_IN,false);
+        boolean isFirstTime = PreferenceUtils.getBoolean(PrefsKey.KEY_FIRST_TIME,true);
         Intent intent;
         if(isLoggedIn) {
             intent = new Intent(SonHaDispatcherActivity.this,TabActivity.class);
         } else {
-            intent = new Intent(SonHaDispatcherActivity.this,MainActivity.class);
+            if(isFirstTime) {
+                intent = new Intent(SonHaDispatcherActivity.this,MainActivity.class);
+            } else {
+                intent = new Intent(SonHaDispatcherActivity.this,MainActivity.class);
+            }
         }
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

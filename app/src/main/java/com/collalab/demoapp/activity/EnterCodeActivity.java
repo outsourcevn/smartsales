@@ -44,6 +44,7 @@ public class EnterCodeActivity extends AppCompatActivity {
         if (isEnableRegister) {
 
             PreferenceUtils.commitBoolean(PrefsKey.KEY_IS_LOGGED_IN,true);
+            PreferenceUtils.commitBoolean(PrefsKey.KEY_FIRST_TIME,false);
 
             Intent intent = new Intent(EnterCodeActivity.this, TabActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

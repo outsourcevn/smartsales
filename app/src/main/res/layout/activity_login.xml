@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBgLight">
+
+    <LinearLayout
+        android:id="@+id/layout_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:padding="35dp">
+
+        <ImageView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            android:src="@drawable/ic_sonha_logo" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_logo"
+        android:layout_marginTop="@dimen/padding_medium"
+        android:gravity="center_horizontal"
+        android:text="Xin mời đăng nhập"
+        android:textAllCaps="true"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/layout_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_logo"
+        android:layout_marginTop="@dimen/padding_large"
+        android:layout_weight="2.5"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <com.collalab.demoapp.widget.AwesomeFontTextView
+            android:id="@+id/tv_icon_show_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/edt_main_phone"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:padding="8dp"
+            android:text="@string/string_icon_arrow_down"
+            android:textColor="@color/color_353535"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/edt_main_phone"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:layout_toRightOf="@+id/tv_icon_show_hide"
+            android:hint="Số điện thoại"
+            android:inputType="phone"
+            android:padding="8dp"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/edt_sub_phone"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_main_phone"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:layout_toRightOf="@+id/tv_icon_show_hide"
+            android:hint="Số điện thoại phụ"
+            android:inputType="phone"
+            android:padding="8dp"
+            android:textSize="15dp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/edt_password"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_sub_phone"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:layout_toRightOf="@+id/tv_icon_show_hide"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textSize="15dp"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/layout_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/edt_password"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/padding_xlarge"
+                android:layout_marginRight="@dimen/padding_xlarge"
+                android:background="@drawable/drawable_button_blue_bg"
+                android:gravity="center"
+                android:padding="@dimen/padding_xmedium"
+                android:text="Đăng nhập"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/padding_medium"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="Đăng ký"
+                    android:textSize="@dimen/text_normal" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:text="Quên mật khẩu?"
+                    android:textSize="@dimen/text_normal" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
