@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_kho_hang"
+        android:enabled="true"
+        android:icon="@drawable/ic_ware_house_white_24dp"
+        android:title="@string/string_kho_hang"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_nhan_hang"
+        android:enabled="true"
+        android:icon="@drawable/ic_store_white_24dp"
+        android:title="@string/string_nhan_hang"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_ban_hang"
+        android:enabled="true"
+        android:icon="@drawable/ic_shopping_cart_white_24dp"
+        android:title="@string/string_ban_hang"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_nhan_hang_tra"
+        android:enabled="true"
+        android:icon="@drawable/ic_return_goods_white_24dp"
+        android:title="@string/string_nhan_hang_tra"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_cai_dat"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings_white_24dp"
+        android:title="@string/string_cai_dat"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SonHaApp</string>
+    <string name="string_icon_arrow_down">&#xf107;</string>
+    <string name="string_icon_arrow_up">&#xf106;</string>
+    <string name="string_kho_hang">Kho hàng</string>
+    <string name="string_nhan_hang">Nhận hàng</string>
+    <string name="string_ban_hang">Bán hàng</string>
+    <string name="string_nhan_hang_tra">Trả hàng</string>
+    <string name="string_cai_dat">Cài đặt</string>
+</resources>
