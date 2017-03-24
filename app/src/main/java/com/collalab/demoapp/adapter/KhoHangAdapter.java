@@ -53,19 +53,19 @@ public class KhoHangAdapter extends AdapterFooterView {
 
     @Override
     public void onBindViewWithData(RecyclerView.ViewHolder holderRecycle, int position) {
-        ProductEntity productEntity = productEntities.get(position);
-        ViewHolder viewHolder = (ViewHolder) holderRecycle;
-        if (!TextUtils.isEmpty(productEntity.getProduct_name())) {
-            viewHolder.tvProductName.setText(productEntity.getProduct_name());
-        } else {
-            viewHolder.tvProductName.setText("Chưa cập nhật tên sản phẩm");
-        }
-        if (productEntity.getImport_date() != null) {
-            viewHolder.tvImportedDate.setText(Common.getDateInString(productEntity.getImport_date()));
-        }
-        if (!TextUtils.isEmpty(productEntity.getProduct_code())) {
-            viewHolder.tvProductCode.setText("Mã sản phẩm: ");
-        }
+//        ProductEntity productEntity = productEntities.get(position);
+//        ViewHolder viewHolder = (ViewHolder) holderRecycle;
+//        if (!TextUtils.isEmpty(productEntity.getProduct_name())) {
+//            viewHolder.tvProductName.setText(productEntity.getProduct_name());
+//        } else {
+//            viewHolder.tvProductName.setText("Chưa cập nhật tên sản phẩm");
+//        }
+//        if (productEntity.getImport_date() != null) {
+//            viewHolder.tvImportedDate.setText(Common.getDateInString(productEntity.getImport_date()));
+//        }
+//        if (!TextUtils.isEmpty(productEntity.getProduct_code())) {
+//            viewHolder.tvProductCode.setText("Mã sản phẩm: ");
+//        }
     }
 
     @Override
