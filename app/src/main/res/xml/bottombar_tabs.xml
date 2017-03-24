@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        icon="@drawable/ic_ware_house_white_24dp"
+        id="@+id/action_kho_hang"
+        title="@string/string_kho_hang" />
+    <tab
+        icon="@drawable/ic_store_white_24dp"
+        id="@+id/action_nhan_hang"
+        title="@string/string_nhan_hang" />
+    <tab
+        icon="@drawable/ic_shopping_cart_white_24dp"
+        id="@+id/action_ban_hang"
+        title="@string/string_ban_hang" />
+    <tab
+        icon="@drawable/ic_return_goods_white_24dp"
+        id="@+id/action_nhan_hang_tra"
+        title="@string/string_nhan_hang_tra" />
+    <tab
+        icon="@drawable/ic_settings_white_24dp"
+        id="@+id/action_cai_dat"
+        title="@string/string_cai_dat" />
+</tabs>

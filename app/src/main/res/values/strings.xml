@@ -7,4 +7,7 @@
     <string name="string_ban_hang">Bán hàng</string>
     <string name="string_nhan_hang_tra">Trả hàng</string>
     <string name="string_cai_dat">Cài đặt</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
