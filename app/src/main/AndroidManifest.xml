@@ -26,8 +26,7 @@
             android:name=".activity.TabActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.SonHaDispatcherActivity"
-            android:theme="@android:style/Theme.NoDisplay">
+            android:name=".activity.SonHaDispatcherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

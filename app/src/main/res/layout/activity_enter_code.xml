@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="35dp">
 
         <ImageView
@@ -22,7 +23,16 @@
             android:layout_gravity="center"
             android:adjustViewBounds="true"
             android:gravity="center"
-            android:src="@drawable/ic_sonha_logo" />
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="SMART SALSE"
+            android:textColor="@color/color_353535"
+            android:textSize="22dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -62,9 +72,9 @@
         app:hint=""
         app:inputType="text"
         app:password="true"
-        app:pinHeight="40dp"
-        app:pinLength="4"
-        app:pinWidth="40dp" />
+        app:pinHeight="36dp"
+        app:pinLength="6"
+        app:pinWidth="36dp" />
 
     <LinearLayout
         android:id="@+id/layout_login"

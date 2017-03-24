@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.edt_sub_phone)
     EditText edtSubPhone;
 
-    @BindView(R.id.edt_password)
-    EditText edtPassword;
-
     private boolean isShowSubPhone = false;
 
     @Override
@@ -51,19 +48,21 @@ public class MainActivity extends AppCompatActivity {
         if (isShowSubPhone) {
             edtSubPhone.setVisibility(View.GONE);
             isShowSubPhone = false;
+            tvShowHide.setText(getResources().getString(R.string.string_icon_arrow_down));
         } else {
             edtSubPhone.setVisibility(View.VISIBLE);
             isShowSubPhone = true;
+            tvShowHide.setText(getResources().getString(R.string.string_icon_arrow_up));
         }
     }
 
     @OnClick(R.id.tv_register)
     public void onRegister() {
-        if(!invalidate()) {
+        if (!invalidate()) {
             return;
         }
-        PreferenceUtils.commitString(PrefsKey.KEY_PHONE_MAIN,edtMainPhone.getEditableText().toString());
-        PreferenceUtils.commitString(PrefsKey.KEY_PHONE_SUB,edtSubPhone.getEditableText().toString());
+        PreferenceUtils.commitString(PrefsKey.KEY_PHONE_MAIN, edtMainPhone.getEditableText().toString());
+        PreferenceUtils.commitString(PrefsKey.KEY_PHONE_SUB, edtSubPhone.getEditableText().toString());
         Intent intent = new Intent(MainActivity.this, EnterCodeActivity.class);
         startActivity(intent);
     }
@@ -74,10 +73,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
 
-        if (TextUtils.isEmpty(edtPassword.getEditableText().toString())) {
-            edtPassword.setError("Vui lòng nhập mật khẩu");
-            return false;
-        }
         return true;
     }
 }

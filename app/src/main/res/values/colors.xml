@@ -6,4 +6,9 @@
 
     <color name="color_353535">#353535</color>
     <color name="colorBgLight">#90CAF9</color>
+    <color name="colorGrayBackground">#797979</color>
+    <color name="color_c8c7cc">#c8c7cc</color>
+    <color name="colorLightGray">#fcfcfc</color>
+    <color name="colorTextBtn">#ffa500</color>
+    <color name="DarkText">#585858</color>
 </resources>

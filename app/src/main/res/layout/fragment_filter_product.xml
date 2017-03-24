@@ -5,7 +5,7 @@
     android:background="@android:color/white"
     android:clickable="true"
     android:orientation="vertical"
-    tools:context="com.collalab.demoapp.fragment.BanHangFragment">
+    tools:context="com.collalab.demoapp.fragment.FilterProductFragment">
 
     <RelativeLayout
         android:id="@+id/layout_top_actionbar"
@@ -13,38 +13,37 @@
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary">
 
-        <TextView
-            android:id="@+id/tv_retail"
+        <ImageView
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:paddingLeft="12dp"
-            android:text="@string/string_retail_client"
-            android:textColor="@color/colorTextBtn"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+            android:adjustViewBounds="true"
+            android:padding="12dp"
+            android:src="@drawable/ic_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="@string/string_ban_hang"
+            android:text="@string/string_kho_hang"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/btn_add"
+        <TextView
+            android:id="@+id/btn_list_all"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:adjustViewBounds="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
             android:padding="12dp"
-            android:src="@drawable/ic_add" />
+            android:text="Tất cả"
+            android:textColor="@color/colorTextBtn"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
 </LinearLayout>
