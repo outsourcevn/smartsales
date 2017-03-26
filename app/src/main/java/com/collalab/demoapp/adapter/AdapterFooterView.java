@@ -88,7 +88,7 @@ public abstract class AdapterFooterView extends RecyclerView.Adapter<RecyclerVie
     }
 
     protected boolean isPositionFooter(int position) {
-        return position == getDataLength();
+        return (position == 0 && getItemCount() == 1) || position == getDataLength();
     }
 
     public int getItemViewType(int position) {

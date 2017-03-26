@@ -2,17 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:background="@drawable/drawable_kho_hang_item_bg"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp"
     android:orientation="vertical"
     android:padding="5dp">
 
-    <TextView
-        android:id="@+id/tv_product_name"
+    <com.collalab.demoapp.widget.RichTextView
+        android:id="@+id/tv_product_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="3"
-        android:text="MÁY NƯỚC NÓNG NĂNG LƯỢNG MẶT TRỜI SENTINEL"
+        android:text="Ma san pham: NN20128"
         android:textAllCaps="true"
         android:textColor="@color/color_353535"
         android:textSize="16dp"
@@ -22,37 +23,16 @@
         android:id="@+id/tv_import_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_product_name"
+        android:layout_below="@+id/tv_product_id"
         android:layout_marginTop="5dp"
         android:text="Ngay nhap kho: 13/03/2017"
         android:textSize="14dp" />
 
-    <com.collalab.demoapp.widget.RichTextView
-        android:id="@+id/tv_product_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
         android:layout_below="@+id/tv_import_date"
-        android:layout_marginTop="2dp"
-        android:text="Ma san pham: #1001023"
-        android:textSize="14dp" />
-
-    <com.collalab.demoapp.widget.RichTextView
-        android:id="@+id/tv_remain_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_product_id"
-        android:layout_marginTop="2dp"
-        android:text="So luong con: 200sp"
-        android:textSize="14dp" />
-
-    <com.collalab.demoapp.widget.RichTextView
-        android:id="@+id/tv_number_sold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_remain_count"
-        android:layout_marginTop="2dp"
-        android:text="Da ban: 15 san pham"
-        android:textSize="14dp" />
-
+        android:layout_marginTop="3dp"
+        android:background="#d2d2d2" />
 
 </RelativeLayout>

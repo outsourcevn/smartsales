@@ -1,8 +1,11 @@
 package com.collalab.demoapp.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.text.style.StyleSpan;
+import android.text.style.TypefaceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import com.collalab.demoapp.entity.ProductEntity;
 import com.collalab.demoapp.widget.RichTextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,16 +38,10 @@ public class KhoHangAdapter extends AdapterFooterView {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_product_name)
-        TextView tvProductName;
         @BindView(R.id.tv_import_date)
         RichTextView tvImportedDate;
         @BindView(R.id.tv_product_id)
         RichTextView tvProductCode;
-        @BindView(R.id.tv_remain_count)
-        RichTextView tvRemainProductCount;
-        @BindView(R.id.tv_number_sold)
-        RichTextView tvNumberProductSold;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -53,19 +51,23 @@ public class KhoHangAdapter extends AdapterFooterView {
 
     @Override
     public void onBindViewWithData(RecyclerView.ViewHolder holderRecycle, int position) {
-//        ProductEntity productEntity = productEntities.get(position);
-//        ViewHolder viewHolder = (ViewHolder) holderRecycle;
-//        if (!TextUtils.isEmpty(productEntity.getProduct_name())) {
-//            viewHolder.tvProductName.setText(productEntity.getProduct_name());
-//        } else {
-//            viewHolder.tvProductName.setText("Chưa cập nhật tên sản phẩm");
-//        }
-//        if (productEntity.getImport_date() != null) {
-//            viewHolder.tvImportedDate.setText(Common.getDateInString(productEntity.getImport_date()));
-//        }
-//        if (!TextUtils.isEmpty(productEntity.getProduct_code())) {
-//            viewHolder.tvProductCode.setText("Mã sản phẩm: ");
-//        }
+        ViewHolder viewHolder = (ViewHolder) holderRecycle;
+        viewHolder.tvImportedDate.reset();
+        viewHolder.tvImportedDate.addPiece(new RichTextView.SpanStyle.Builder("Ngày nhập kho:  ").build());
+        viewHolder.tvImportedDate.addPiece(new RichTextView.SpanStyle.Builder(Common.getDateInString(Calendar.getInstance().getTime()))
+                .textColor(context.getResources().getColor(R.color.colorTextHightLight))
+                .textSizeRelative(1.2f)
+                .style(new StyleSpan(Typeface.BOLD).getStyle()).build());
+        viewHolder.tvImportedDate.display();
+
+        viewHolder.tvProductCode.reset();
+        viewHolder.tvProductCode.addPiece(new RichTextView.SpanStyle.Builder("Mã sản phẩm:  ").build());
+        viewHolder.tvProductCode.addPiece(new RichTextView.SpanStyle.Builder(" 21566789").textColor(context.getResources().getColor(R.color.colorTextHightLight))
+                .textSizeRelative(1.2f)
+                .style(new StyleSpan(Typeface.BOLD).getStyle())
+                .build());
+        viewHolder.tvProductCode.display();
+
     }
 
     @Override

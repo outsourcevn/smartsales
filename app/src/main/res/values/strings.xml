@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SonHaApp</string>
+    <string name="app_name">Smart Sale</string>
     <string name="string_icon_arrow_down">&#xf107;</string>
     <string name="string_icon_arrow_up">&#xf106;</string>
     <string name="string_kho_hang">Kho hàng</string>
@@ -9,6 +9,69 @@
     <string name="string_nhan_hang_tra_long">Nhận hàng trả</string>
     <string name="string_cai_dat">Cài đặt</string>
     <string name="string_retail_client">Khách lẻ</string>
+    <string name="string_notification">Thông báo</string>
+    <string name="string_ma_nhan">Mã Nhận</string>
+    <string name="string_list_phone">Danh sách số điện thoại</string>
+    <string name="string_store_image">Hình ảnh cửa hàng</string>
+    <string name="string_company_info">Thông tin công ty</string>
+    <string name="string_ban_hang_le">Bán hàng lẻ</string>
+
+    <string-array name="themes_array">
+        <item>Sand</item>
+        <item>Orange</item>
+        <item>Candy</item>
+        <item>Blossom</item>
+        <item>Grape</item>
+        <item>Deep</item>
+        <item>Sky</item>
+        <item>Grass</item>
+        <item>Dark</item>
+        <item>Snow</item>
+        <item>Sea</item>
+        <item>Blood</item>
+    </string-array>
+
+    <string name="contract_promt">Chọn trạng thái</string>
+
+    <string-array name="contract_array">
+        <item>Chưa ký hợp đồng</item>
+        <item>Đã ký hợp đồng</item>
+        <item>Chờ duyệt hợp đồng</item>
+    </string-array>
+
+    <string name="string_sample_title_1">Chương trình bảo trì sản phẩm cho khách hàng</string>
+    <string name="string_sample_content_1">Chương trình là dịp để Tập đoàn Sơn Hà gửi lời tri ân tới quý khách hàng đã luôn đồng hành, tin tưởng, ủng hộ và lựa chọn sản phẩm của mình trong suốt gần 20 năm qua. Và cũng là dịp để khách hàng trải nghiệm dịch vụ chăm sóc, bảo hành, bảo trì đến từ những nhân viên chuyên nghiệp, năng động của Sơn Hà.
+
+Việc vệ sinh sản phẩm là điều rất cần thiết bởi vì trong quá trình sử dụng lâu ngày khiến nước trong Bồn nước inox sẽ bị tích tụ vi khuẩn, đọng lại rong rêu, cặn bẩn gây mất vệ sinh nguồn nước và ảnh hưởng trực tiếp tới sức khỏe người sử dụng. Đối với sản phẩm Thái Dương Năng, nếu không sục rửa thường xuyên sẽ xảy ra hiện tượng cặn bám bên trong đường ống làm giảm khả năng hấp thu nhiệt. Vì vậy, cần phải vệ sinh Bồn nước inox và Thái Dương Năng định kì 1 năm/lần để nâng cao tuổi thọ sản phẩm, đảm bảo sức khỏe cho bản thân và gia đình bạn.
+
+Hãy nhanh tay nhấc máy và gọi ngay tới tổng đài: 1800 6566 – 1900 636 092 – 04.62 65 65 66 để đăng ký và lựa chọn cho mình dịch vụ bảo trì của Sơn Hà nhé.</string>
+
+    <string name="string_sample_title_2">SHB và SHK tưng bừng kỷ niệm 1 năm thành lập</string>
+    <string name="string_sample_content_2">Chương trình bảo trì sản phẩm cho khách hàng</string>
+
+    <string name="string_sample_title_3">Mách bạn: Cách nhận biết máy lọc nước RO Sơn Hà chính hãng</string>
+    <string name="string_sample_content_3">Chương trình bảo trì sản phẩm cho khách hàng</string>
+
+    <string name="string_sample_title_4">Sơn Hà SSP Việt Nam tổ chức thành công Hội nghị khách hàng tại Hòa Bình</string>
+    <string name="string_sample_content_4">Chương trình bảo trì sản phẩm cho khách hàng</string>
+
+    <string name="string_sample_title_5">Hướng dẫn sử dụng bình nước nóng an toàn</string>
+    <string name="string_sample_content_5">Chương trình bảo trì sản phẩm cho khách hàng</string>
+
+    <string name="string_sample_title_6">Công cuộc chinh phục Châu Phi của Sơn Hà SSP Việt Nam</string>
+    <string name="string_sample_content_6">Chương trình bảo trì sản phẩm cho khách hàng</string>
+
+    <string name="string_sample_title_7">Sơn Hà rộn ràng ngày Quốc tế Phụ nữ 8/3</string>
+    <string name="string_sample_content_7">Chương trình bảo trì sản phẩm cho khách hàng</string>
+
+    <string name="string_sample_title_8">Sơn Hà SSP Việt Nam khai trương chi nhánh Bắc Kạn</string>
+    <string name="string_sample_content_8">Chương trình bảo trì sản phẩm cho khách hàng</string>
+
+    <string name="string_sample_title_9">Thái Dương năng Sơn Hà 140l nên dùng cho mấy người?</string>
+    <string name="string_sample_content_9">Chương trình bảo trì sản phẩm cho khách hàng</string>
+
+    <string name="string_sample_title_10">Hội nghị khách hàng Sơn Hà Nghệ An 2017</string>
+    <string name="string_sample_content_10">Chương trình bảo trì sản phẩm cho khách hàng</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

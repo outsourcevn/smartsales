@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btn_close_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/ic_close_circle"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_centerInParent="true"
+            android:text="Thêm Mã"
+            android:textAllCaps="true"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/edt_product_code"
+            android:layout_weight="3"
+            android:padding="8dp"
+            android:text="Mã hàng: "
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/edt_product_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_icon_show_hide"
+            android:layout_weight="5"
+            android:inputType="textCapCharacters"
+            android:background="@drawable/drawable_edt_bg_stroke"
+            android:hint="Mã sản phẩm"
+            android:padding="8dp"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_date_created"
+            android:layout_weight="3"
+            android:padding="8dp"
+            android:text="Ngày nhập hàng: "
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_date_created"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_icon_show_hide"
+            android:layout_weight="5"
+            android:background="@drawable/drawable_edt_bg_stroke"
+            android:hint="23/03/2017"
+            android:padding="8dp"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_retry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:background="@drawable/drawable_btn_bg_solid"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="Thử lại"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/drawable_btn_bg_solid"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="Ghi"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="SMART SALSE"
+            android:text="SMART SALES"
             android:textColor="@color/color_353535"
             android:textSize="22dp"
             android:textStyle="bold" />
@@ -64,7 +64,8 @@
             android:padding="8dp"
             android:text="@string/string_icon_arrow_down"
             android:textColor="@color/color_353535"
-            android:textSize="15dp" />
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edt_main_phone"
@@ -73,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_medium"
             android:layout_toRightOf="@+id/tv_icon_show_hide"
-            android:hint="Số điện thoại"
+            android:hint="Số điện thoại chính"
             android:inputType="phone"
             android:padding="8dp"
             android:textSize="15dp" />
@@ -122,5 +123,15 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:text="Liên Hệ"
+        android:textSize="14sp" />
 
 </RelativeLayout>

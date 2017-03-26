@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,19 +32,145 @@
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/btn_list_all"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:padding="12dp"
-            android:text="Tất cả"
-            android:textColor="@color/colorTextBtn"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
     </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Lựa chọn điều kiện tìm"
+                android:textAllCaps="true"
+                android:textColor="@color/color_353535"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edt_product_name"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:layout_toRightOf="@+id/tv_icon_show_hide"
+                android:background="@drawable/drawable_edt_bg_stroke"
+                android:hint="Tên sản phẩm"
+                android:padding="8dp"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/edt_product_code"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:layout_toRightOf="@+id/tv_icon_show_hide"
+                android:background="@drawable/drawable_edt_bg_stroke"
+                android:hint="Mã sản phẩm"
+                android:padding="8dp"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Lọc theo ngày"
+                android:textSize="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_start_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_calendar"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="23/03/2017"
+                    android:textColor="@color/color_353535"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_end_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_calendar"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="23/03/2017"
+                    android:textColor="@color/color_353535"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.cengalabs.flatui.views.FlatToggleButton
+                    android:id="@+id/toggle_checked_enabled"
+                    android:layout_width="72dp"
+                    android:layout_height="36dp"
+                    android:layout_toRightOf="@+id/tv_ton_kho"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:text="Full Flat"
+                    flatui:fl_cornerRadius="18dp"
+                    flatui:fl_space="14dp"
+                    flatui:fl_theme="@array/sea" />
+
+                <TextView
+                    android:id="@+id/tv_ton_kho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_alignBaseline="@+id/toggle_checked_enabled"
+                    android:gravity="center"
+                    android:text="Còn hàng tồn kho: "
+                    android:textSize="15dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/btn_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/drawable_btn_bg_solid"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="8dp"
+                    android:text="Tìm"
+                    android:textColor="@android:color/white"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

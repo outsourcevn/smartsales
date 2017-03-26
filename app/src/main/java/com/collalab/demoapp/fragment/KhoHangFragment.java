@@ -11,15 +11,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.adapter.KhoHangAdapter;
 import com.collalab.demoapp.entity.ProductEntity;
+import com.collalab.demoapp.event.EventFilter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class KhoHangFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private static final String ARG_PARAM1 = "param1";
@@ -34,9 +40,12 @@ public class KhoHangFragment extends Fragment implements SwipeRefreshLayout.OnRe
     RecyclerView recyclerView;
     @BindView(R.id.main_swipe_refresh_layout)
     SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.btn_filter)
+    TextView mTextFilter;
 
     KhoHangAdapter khoHangAdapter;
     ArrayList<ProductEntity> listProduct = new ArrayList<>();
+    boolean isOnFilter = false;
 
     public KhoHangFragment() {
         // Required empty public constructor
@@ -49,6 +58,14 @@ public class KhoHangFragment extends Fragment implements SwipeRefreshLayout.OnRe
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -86,6 +103,37 @@ public class KhoHangFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     @Override
     public void onRefresh() {
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
 
+    @OnClick(R.id.btn_filter)
+    public void onFilterClick() {
+        if (isOnFilter) {
+            isOnFilter = false;
+            mTextFilter.setText("Tìm kiếm");
+        } else {
+            FilterProductFragment filterProductFragment = FilterProductFragment.newInstance("", "");
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.filter_container, filterProductFragment).addToBackStack(null).commit();
+        }
+    }
+
+    @OnClick(R.id.btn_notification)
+    public void onNotificationClick() {
+        NotificationFragment notificationFragment = NotificationFragment.newInstance("", "");
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.filter_container, notificationFragment).addToBackStack(null).commit();
+    }
+
+    @Subscribe
+    public void onEvent(EventFilter eventFilter) {
+        isOnFilter = true;
+        mTextFilter.setText("Tất cả");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

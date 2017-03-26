@@ -11,4 +11,6 @@
     <color name="colorLightGray">#fcfcfc</color>
     <color name="colorTextBtn">#ffa500</color>
     <color name="DarkText">#585858</color>
+    <color name="colorTextHightLight">#e73948</color>
+    <color name="colorUnreadNotification">#edf1fa</color>
 </resources>

@@ -1,7 +1,5 @@
 package com.collalab.demoapp.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,14 +8,9 @@ import android.view.ViewGroup;
 
 import com.collalab.demoapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link TraHangFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link TraHangFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class TraHangFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -51,6 +44,15 @@ public class TraHangFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tra_hang, container, false);
+        View view = inflater.inflate(R.layout.fragment_tra_hang, container, false);
+        ButterKnife.bind(this, view);
+        return view;
+    }
+
+    @OnClick(R.id.btn_notification)
+    public void onNotificationClick() {
+        NotificationFragment notificationFragment = NotificationFragment.newInstance("", "");
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.tra_hang_container, notificationFragment).addToBackStack(null).commit();
     }
 }

@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +14,7 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:id="@+id/btn_back"
+            android:id="@+id/btn_notification"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
@@ -32,6 +32,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/btn_filter"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
@@ -65,4 +66,9 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/filter_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

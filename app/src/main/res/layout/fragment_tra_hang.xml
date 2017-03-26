@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +14,7 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:id="@+id/btn_back"
+            android:id="@+id/btn_notification"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
@@ -41,4 +41,9 @@
             android:src="@drawable/ic_add" />
     </RelativeLayout>
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/tra_hang_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

@@ -67,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @OnClick(R.id.tv_contact)
+    public void onContactClick() {
+
+    }
+
     private boolean invalidate() {
         if (TextUtils.isEmpty(edtMainPhone.getEditableText().toString().trim())) {
             edtMainPhone.setError("Vui lòng nhập số điện thoại");

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Xử lý mã hàng"
+        android:textAllCaps="true"
+        android:textColor="@color/color_353535"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_product_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:padding="8dp"
+        android:text="Mã hàng: 5505"
+        android:textColor="@color/color_353535"
+        android:textSize="15dp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
+
+        <RadioButton
+            android:id="@+id/radio_btn_sms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:drawableRight="@drawable/ic_sms"
+            android:gravity="center_vertical"
+            android:text="Gửi tin nhắn SMS"
+            android:textColor="@color/color_353535" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_internet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:drawableRight="@drawable/ic_internet"
+            android:gravity="center_vertical"
+            android:text="Gửi thông qua Internet"
+            android:textColor="@color/color_353535" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/btn_close_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/padding_xxlarge"
+        android:layout_marginRight="@dimen/padding_xxlarge"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/drawable_button_blue_bg"
+        android:gravity="center"
+        android:padding="@dimen/padding_xmedium"
+        android:text="Hủy Bỏ"
+        android:layout_marginBottom="15dp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/padding_medium"
+        android:textStyle="bold" />
+
+</LinearLayout>
