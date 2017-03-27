@@ -8,7 +8,15 @@ public class ScanItem {
     private String code;
     private boolean success;
     private boolean isImportProcess;
+    private String processType;
 
+    public String getProcessType() {
+        return processType;
+    }
+
+    public void setProcessType(String processType) {
+        this.processType = processType;
+    }
 
     public String getCode() {
         return code;

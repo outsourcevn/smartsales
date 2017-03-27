@@ -69,7 +69,11 @@ public class ScanAdapter extends AdapterFooterView {
         viewHolder.tvCode.setText("Mã: " + scanItem.getCode());
 
         if (scanItem.isSuccess()) {
-            viewHolder.tvStatus.setText("Trạng thái: Đã xử lý");
+            if("sms".equalsIgnoreCase(scanItem.getProcessType())) {
+                viewHolder.tvStatus.setText("Trạng thái: Đã xử lý (Bằng gửi SMS)");
+            } else if("internet".equalsIgnoreCase(scanItem.getProcessType())) {
+                viewHolder.tvStatus.setText("Trạng thái: Đã xử lý (Bằng gửi qua Internet)");
+            }
             viewHolder.layoutDoAction.setVisibility(View.GONE);
         } else {
             viewHolder.tvStatus.setText("Trạng thái: Chưa xử lý");

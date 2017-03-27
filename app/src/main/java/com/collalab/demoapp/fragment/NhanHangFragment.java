@@ -118,18 +118,18 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
         }
     }
 
-    @OnClick(R.id.btn_notification)
+    @OnClick(R.id.btn_filter_by_time)
     public void onNotificationClick() {
-        NotificationFragment notificationFragment = NotificationFragment.newInstance("", "");
+        FilterTimeFragment filterTimeFragment = FilterTimeFragment.newInstance("", "");
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container_nhan_hang, notificationFragment).addToBackStack(null).commit();
+                .replace(R.id.fragment_container_nhan_hang, filterTimeFragment).addToBackStack(null).commit();
     }
 
     @OnClick(R.id.btn_add)
     public void onAddClick() {
-        FragmentManager fm = getChildFragmentManager();
-        NhapKhoAddDialogFragment editNameDialogFragment = new NhapKhoAddDialogFragment();
-        editNameDialogFragment.show(fm, "fragment_view_info");
+        ThemMaNhanHang notificationFragment = ThemMaNhanHang.newInstance("", "");
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container_nhan_hang, notificationFragment).addToBackStack(null).commit();
     }
 
     @Subscribe
@@ -177,7 +177,7 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         @Override
         public void onEditClick(int position) {
-            if(listProduct != null && listProduct.size() > position) {
+            if (listProduct != null && listProduct.size() > position) {
                 ImportProductEntity importProductEntity = listProduct.get(position);
                 DateData dateData = new DateData();
                 Calendar calendar = Calendar.getInstance();
@@ -185,9 +185,10 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
                 dateData.year = calendar.get(Calendar.YEAR);
                 dateData.month = calendar.get(Calendar.MONTH);
                 dateData.day = calendar.get(Calendar.DAY_OF_MONTH);
-                FragmentManager fm = getChildFragmentManager();
-                NhapKhoAddDialogFragment editNameDialogFragment = NhapKhoAddDialogFragment.newInstance(importProductEntity.getProduct_code(),dateData);
-                editNameDialogFragment.show(fm, "fragment_view_info");
+
+                ThemMaNhanHang notificationFragment = ThemMaNhanHang.newInstance(importProductEntity.getProduct_code(), dateData);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container_nhan_hang, notificationFragment).addToBackStack(null).commit();
             }
         }
     };

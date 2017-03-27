@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
 
+import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.persistence.PreferenceUtils;
 import com.collalab.demoapp.persistence.PrefsKey;
@@ -40,6 +41,9 @@ public class LoginActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(edtMainPhone.getEditableText().toString()) && !TextUtils.isEmpty(edtSubPhone.getEditableText().toString())) {
 
         }
+
+        Common.hideKeyBoard(this);
+
         PreferenceUtils.commitBoolean(PrefsKey.KEY_IS_LOGGED_IN, true);
         Intent intent = new Intent(this, TabActivity.class);
         startActivity(intent);

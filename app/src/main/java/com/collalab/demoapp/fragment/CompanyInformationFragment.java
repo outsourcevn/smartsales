@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.persistence.PreferenceUtils;
 import com.collalab.demoapp.persistence.PrefsKey;
@@ -84,7 +85,10 @@ public class CompanyInformationFragment extends Fragment {
         PreferenceUtils.commitString(PrefsKey.KEY_ADDRESS, edtAddress.getEditableText().toString().trim());
         PreferenceUtils.commitString(PrefsKey.KEY_ID_NUM, edtIdNumber.getEditableText().toString().trim());
         PreferenceUtils.commitInt(PrefsKey.KEY_CONTRACT_STATUS, spinnerContractStatus.getSelectedItemPosition());
-        Toast.makeText(getContext(),"Đã lưu thông tin thành công!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Đã lưu thông tin thành công!", Toast.LENGTH_SHORT).show();
+
+        Common.hideKeyBoard(getActivity());
+
         getActivity().onBackPressed();
     }
 

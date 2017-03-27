@@ -16,8 +16,7 @@
         android:text="Ma san pham: NN20128"
         android:textAllCaps="true"
         android:textColor="@color/color_353535"
-        android:textSize="16dp"
-        android:textStyle="bold" />
+        android:textSize="15dp" />
 
     <com.collalab.demoapp.widget.RichTextView
         android:id="@+id/tv_import_date"
@@ -25,8 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_product_id"
         android:layout_marginTop="5dp"
+        android:textColor="@color/color_353535"
         android:text="Ngay nhap kho: 13/03/2017"
-        android:textSize="14dp" />
+        android:textSize="15dp" />
 
     <View
         android:layout_width="match_parent"

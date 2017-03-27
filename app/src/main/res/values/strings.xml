@@ -18,6 +18,7 @@
     <string name="string_ban_hang_le">Bán hàng lẻ</string>
     <string name="string_them_ma">Thêm Mã</string>
     <string name="string_quet_ma">Quét Mã</string>
+    <string name="string_filter_by_time">Lọc thời gian</string>
 
     <string-array name="themes_array">
         <item>Sand</item>

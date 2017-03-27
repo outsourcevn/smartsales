@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.persistence.PreferenceUtils;
 import com.collalab.demoapp.persistence.PrefsKey;
@@ -47,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
         TransitionManager.beginDelayedTransition(layoutRegisterPhone);
         if (isShowSubPhone) {
             edtSubPhone.setVisibility(View.GONE);
+            edtMainPhone.setEnabled(true);
             isShowSubPhone = false;
             tvShowHide.setText(getResources().getString(R.string.string_icon_arrow_down));
         } else {
             edtSubPhone.setVisibility(View.VISIBLE);
+            edtMainPhone.setEnabled(false);
             isShowSubPhone = true;
             tvShowHide.setText(getResources().getString(R.string.string_icon_arrow_up));
         }
@@ -61,9 +64,15 @@ public class MainActivity extends AppCompatActivity {
         if (!invalidate()) {
             return;
         }
-        PreferenceUtils.commitString(PrefsKey.KEY_PHONE_MAIN, edtMainPhone.getEditableText().toString());
-        PreferenceUtils.commitString(PrefsKey.KEY_PHONE_SUB, edtSubPhone.getEditableText().toString());
+        if (edtMainPhone.isEnabled()) {
+            PreferenceUtils.commitString(PrefsKey.KEY_PHONE_MAIN, edtMainPhone.getEditableText().toString());
+            PreferenceUtils.commitBoolean(PrefsKey.KEY_IS_MAIN_NUMBER, true);
+        } else {
+            PreferenceUtils.commitString(PrefsKey.KEY_PHONE_SUB, edtSubPhone.getEditableText().toString());
+            PreferenceUtils.commitBoolean(PrefsKey.KEY_IS_MAIN_NUMBER, false);
+        }
         Intent intent = new Intent(MainActivity.this, EnterCodeActivity.class);
+        Common.hideKeyBoard(this);
         startActivity(intent);
     }
 
@@ -73,8 +82,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean invalidate() {
-        if (TextUtils.isEmpty(edtMainPhone.getEditableText().toString().trim())) {
-            edtMainPhone.setError("Vui lòng nhập số điện thoại");
+        if (TextUtils.isEmpty(edtMainPhone.getEditableText().toString().trim()) && edtMainPhone.isEnabled()) {
+            edtMainPhone.setError("Vui lòng nhập số điện thoại chính");
+            return false;
+        }
+
+        if (TextUtils.isEmpty(edtSubPhone.getEditableText().toString().trim()) && !edtMainPhone.isEnabled()) {
+            edtSubPhone.setError("Vui lòng nhập số điện thoại phụ");
             return false;
         }
 

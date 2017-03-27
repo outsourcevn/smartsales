@@ -54,6 +54,8 @@ public class BanHangAdapter extends AdapterFooterView {
         TextView tvNumber;
         @BindView(R.id.tv_code)
         TextView tvCode;
+        @BindView(R.id.tv_retail)
+        TextView tvRetail;
         @BindView(R.id.btn_delete)
         View btnDelete;
         @BindView(R.id.btn_edit)
@@ -101,7 +103,9 @@ public class BanHangAdapter extends AdapterFooterView {
 
             if (exportProductEntity.isRetail) {
                 viewHolder.tvCode.setVisibility(View.GONE);
+                viewHolder.tvRetail.setVisibility(View.VISIBLE);
             } else {
+                viewHolder.tvRetail.setVisibility(View.GONE);
                 viewHolder.tvCode.setVisibility(View.VISIBLE);
                 viewHolder.tvCode.setText(exportProductEntity.code);
             }

@@ -42,8 +42,9 @@ public class NhapHangAdapter extends AdapterFooterView {
         this.onItemClick = onItemClick;
     }
 
-    public interface OnItemClick{
+    public interface OnItemClick {
         void onItemClick(int position);
+
         void onEditClick(int position);
     }
 
@@ -76,7 +77,7 @@ public class NhapHangAdapter extends AdapterFooterView {
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(onItemClick != null) {
+                    if (onItemClick != null) {
                         onItemClick.onItemClick(position);
                     }
                 }
@@ -85,43 +86,20 @@ public class NhapHangAdapter extends AdapterFooterView {
                 @Override
                 public void onClick(View view) {
                     productEntities.remove(position);
-                    notifyItemRangeRemoved(position,1);
+                    notifyItemRangeRemoved(position, 1);
                 }
             });
             viewHolder.btnEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(onItemClick != null) {
+                    if (onItemClick != null) {
                         onItemClick.onEditClick(position);
                     }
                 }
             });
-//        if (!TextUtils.isEmpty(productEntity.getProduct_name())) {
-//            viewHolder.tvProductName.setText(productEntity.getProduct_name());
-//        } else {
-//            viewHolder.tvProductName.setText("Chưa cập nhật tên sản phẩm");
-//        }
-//        if (productEntity.getImport_date() != null) {
-//            viewHolder.tvImportedDate.setText(Common.getDateInString(productEntity.getImport_date()));
-//        }
-//        if (!TextUtils.isEmpty(productEntity.getProduct_code())) {
-//            viewHolder.tvProductCode.setText("Mã sản phẩm: ");
-//        }
-            viewHolder.tvImportedDate.reset();
-            viewHolder.tvImportedDate.addPiece(new RichTextView.SpanStyle.Builder("Ngày:  ").build());
-            viewHolder.tvImportedDate.addPiece(new RichTextView.SpanStyle.Builder(Common.getDateInString(productEntity.getCreated_at()))
-                    .textColor(context.getResources().getColor(R.color.colorTextHightLight))
-                    .textSizeRelative(1.2f)
-                    .style(new StyleSpan(Typeface.BOLD).getStyle()).build());
-            viewHolder.tvImportedDate.display();
 
-            viewHolder.tvProductCode.reset();
-            viewHolder.tvProductCode.addPiece(new RichTextView.SpanStyle.Builder("Mã nhận hàng:  ").build());
-            viewHolder.tvProductCode.addPiece(new RichTextView.SpanStyle.Builder(productEntity.getProduct_code()).textColor(context.getResources().getColor(R.color.colorTextHightLight))
-                    .textSizeRelative(1.2f)
-                    .style(new StyleSpan(Typeface.BOLD).getStyle())
-                    .build());
-            viewHolder.tvProductCode.display();
+            viewHolder.tvImportedDate.setText("Ngày: " + Common.getDateInString(productEntity.getCreated_at()));
+            viewHolder.tvProductCode.setText("Mã nhận hàng: " + productEntity.getProduct_code());
         }
     }
 

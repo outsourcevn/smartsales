@@ -1,15 +1,10 @@
 package com.collalab.demoapp.adapter;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.text.style.StyleSpan;
-import android.text.style.TypefaceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
@@ -52,21 +47,8 @@ public class KhoHangAdapter extends AdapterFooterView {
     @Override
     public void onBindViewWithData(RecyclerView.ViewHolder holderRecycle, int position) {
         ViewHolder viewHolder = (ViewHolder) holderRecycle;
-        viewHolder.tvImportedDate.reset();
-        viewHolder.tvImportedDate.addPiece(new RichTextView.SpanStyle.Builder("Ngày nhập kho:  ").build());
-        viewHolder.tvImportedDate.addPiece(new RichTextView.SpanStyle.Builder(Common.getDateInString(Calendar.getInstance().getTime()))
-                .textColor(context.getResources().getColor(R.color.colorTextHightLight))
-                .textSizeRelative(1.2f)
-                .style(new StyleSpan(Typeface.BOLD).getStyle()).build());
-        viewHolder.tvImportedDate.display();
-
-        viewHolder.tvProductCode.reset();
-        viewHolder.tvProductCode.addPiece(new RichTextView.SpanStyle.Builder("Mã sản phẩm:  ").build());
-        viewHolder.tvProductCode.addPiece(new RichTextView.SpanStyle.Builder(" 21566789").textColor(context.getResources().getColor(R.color.colorTextHightLight))
-                .textSizeRelative(1.2f)
-                .style(new StyleSpan(Typeface.BOLD).getStyle())
-                .build());
-        viewHolder.tvProductCode.display();
+        viewHolder.tvImportedDate.setText("Ngày nhập kho: " + Common.getDateInString(Calendar.getInstance().getTime()));
+        viewHolder.tvProductCode.setText("Mã sản phẩm: " + " 21566789");
 
     }
 

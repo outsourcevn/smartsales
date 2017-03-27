@@ -15,6 +15,7 @@
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:text="Ma san pham: #1001023"
+        android:textColor="@color/color_353535"
         android:textSize="15dp" />
 
     <com.collalab.demoapp.widget.RichTextView
@@ -27,6 +28,7 @@
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:text="Ngay nhap kho: 13/03/2017"
+        android:textColor="@color/color_353535"
         android:textSize="15dp" />
 
     <LinearLayout

@@ -3,13 +3,11 @@ package com.collalab.demoapp.fragment;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,7 +16,6 @@ import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.entity.DateData;
 import com.collalab.demoapp.event.EventNhapHang;
-import com.collalab.demoapp.persistence.PreferenceUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -32,7 +29,7 @@ import butterknife.OnClick;
  * Created by VietMac on 2017-03-10.
  */
 
-public class NhapKhoAddDialogFragment extends DialogFragment {
+public class NhapKhoAddDialogFragment extends Fragment {
 
     Calendar nhapHangCalendar;
 
@@ -40,8 +37,6 @@ public class NhapKhoAddDialogFragment extends DialogFragment {
     EditText edtProductCode;
     @BindView(R.id.tv_date_created)
     TextView tvDateCreated;
-    @BindView(R.id.btn_close_dialog)
-    View btnCloseDialog;
 
     String productCode;
     DateData createAt;
@@ -91,15 +86,11 @@ public class NhapKhoAddDialogFragment extends DialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        getDialog().setCanceledOnTouchOutside(false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
         bindData2View();
     }
@@ -127,12 +118,12 @@ public class NhapKhoAddDialogFragment extends DialogFragment {
         eventNhapHang.created_at = nhapHangCalendar.getTime();
         eventNhapHang.product_code = edtProductCode.getEditableText().toString();
         EventBus.getDefault().post(eventNhapHang);
-        dismiss();
+
     }
 
-    @OnClick(R.id.btn_close_dialog)
+    @OnClick(R.id.btn_back)
     public void onClickDialog() {
-        getDialog().dismiss();
+        getActivity().onBackPressed();
     }
 
     private DatePickerDialog.OnDateSetListener onDateSelectListener = new DatePickerDialog.OnDateSetListener() {

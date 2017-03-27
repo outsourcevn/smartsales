@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +15,18 @@ import android.view.ViewGroup;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.entity.ImportProductEntity;
 import com.collalab.demoapp.event.EventNhapHang;
+import com.collalab.demoapp.event.EventSelectYear;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class YearQuarterMonthFragment extends Fragment {
+public class FilterTimeFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -37,17 +39,28 @@ public class YearQuarterMonthFragment extends Fragment {
     @BindView(R.id.viewpager)
     ViewPager viewPager;
 
-    public YearQuarterMonthFragment() {
+    String selectYear;
+    ViewPagerAdapter adapter;
+
+    public FilterTimeFragment() {
         // Required empty public constructor
     }
 
-    public static YearQuarterMonthFragment newInstance(String param1, String param2) {
-        YearQuarterMonthFragment fragment = new YearQuarterMonthFragment();
+    public static FilterTimeFragment newInstance(String param1, String param2) {
+        FilterTimeFragment fragment = new FilterTimeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -62,7 +75,7 @@ public class YearQuarterMonthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_year_quarter_month, container, false);
+        View view = inflater.inflate(R.layout.filter_by_time_layout, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -70,7 +83,7 @@ public class YearQuarterMonthFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        adapter = new ViewPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -84,9 +97,9 @@ public class YearQuarterMonthFragment extends Fragment {
 
     @OnClick(R.id.btn_add)
     public void onAddClick() {
-        FragmentManager fm = getChildFragmentManager();
         NhapKhoAddDialogFragment editNameDialogFragment = new NhapKhoAddDialogFragment();
-        editNameDialogFragment.show(fm, "fragment_view_info");
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container_year_quarter_month, editNameDialogFragment).addToBackStack(null).commit();
     }
 
     @Subscribe
@@ -99,6 +112,15 @@ public class YearQuarterMonthFragment extends Fragment {
         listProduct.add(importProductEntity);
     }
 
+    @Subscribe
+    public void onEvent(EventSelectYear eventSelectYear) {
+        selectYear = eventSelectYear.selectedYear;
+        if(adapter != null) {
+            adapter.notifyDataSetChanged();
+        }
+
+    }
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
 
         public ViewPagerAdapter(FragmentManager manager) {
@@ -107,24 +129,46 @@ public class YearQuarterMonthFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            return FilterByConditionFragment.newInstance(position + 1, listProduct);
+            switch (position) {
+                case 0:
+                    return SelectYearFragment.newInstance("", "");
+                case 1:
+                    return FilterByConditionFragment.newInstance(3, listProduct);
+                case 2:
+                    return FilterByConditionFragment.newInstance(2, listProduct);
+                case 3:
+                    return FilterByConditionFragment.newInstance(1, listProduct);
+            }
+            return new Fragment();
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             if (position == 0) {
-                return "Năm";
+                return "Chọn năm";
             } else if (position == 1) {
-                return "Quý";
-            } else {
                 return "Tháng";
+            } else if (position == 2) {
+                return "Quý";
+            } else if (position == 3) {
+                if (!TextUtils.isEmpty(selectYear)) {
+                    return selectYear;
+                } else {
+                    return "Năm";
+                }
             }
+            return "";
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

@@ -100,6 +100,7 @@ public class LietKeTabFragment extends Fragment {
             ScanItem scanItem = listItem.get(position);
             sendSMS(scanItem.getCode());
             listItem.get(position).setSuccess(true);
+            listItem.get(position).setProcessType("sms");
             scanAdapter.notifyDataSetChanged();
         }
 
@@ -109,7 +110,8 @@ public class LietKeTabFragment extends Fragment {
             if (isConnected()) {
                 Toast.makeText(getContext(), "Đã gửi thành công mã " + scanItem.getCode() + "!", Toast.LENGTH_SHORT).show();
                 listItem.get(position).setSuccess(true);
-                scanAdapter.notifyItemChanged(position);
+                listItem.get(position).setProcessType("internet");
+                scanAdapter.notifyDataSetChanged();
             } else {
                 Toast.makeText(getContext(), "Không có kết nối mạng, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
             }
@@ -129,6 +131,7 @@ public class LietKeTabFragment extends Fragment {
         scanItem.setCode(eventScan.code);
         scanItem.setImportProcess(eventScan.isImportProcess);
         scanItem.setSuccess(eventScan.success);
+        scanItem.setProcessType(eventScan.processType);
         listItem.add(scanItem);
         if (listItem.size() > 0) {
             scanAdapter.hideFooter();

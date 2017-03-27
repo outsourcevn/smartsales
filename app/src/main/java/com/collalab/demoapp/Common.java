@@ -1,5 +1,10 @@
 package com.collalab.demoapp;
 
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,4 +24,21 @@ public class Common {
         }
         return "";
     }
+
+    private static void hideKeyBoard(Context context, View view) {
+        if (context == null || view == null) {
+            return;
+        }
+        InputMethodManager inputManager = (InputMethodManager) context
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static void hideKeyBoard(Activity activity) {
+        View currentFocus = activity.getCurrentFocus();
+        if (currentFocus == null) return;
+        hideKeyBoard(activity, currentFocus);
+    }
+
 }

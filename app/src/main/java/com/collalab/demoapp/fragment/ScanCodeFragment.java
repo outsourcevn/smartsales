@@ -153,6 +153,7 @@ public class ScanCodeFragment extends Fragment implements ZXingScannerView.Resul
                         EventScan eventScan = new EventScan();
                         eventScan.code = code;
                         eventScan.success = true;
+                        eventScan.processType = "sms";
                         if (dangQuetNhanHang) {
                             eventScan.isImportProcess = true;
                         } else {
@@ -194,6 +195,7 @@ public class ScanCodeFragment extends Fragment implements ZXingScannerView.Resul
                             EventScan eventScan = new EventScan();
                             eventScan.code = code;
                             eventScan.success = true;
+                            eventScan.processType = "internet";
                             if (dangQuetNhanHang) {
                                 eventScan.isImportProcess = true;
                             } else {
@@ -231,6 +233,7 @@ public class ScanCodeFragment extends Fragment implements ZXingScannerView.Resul
                         EventScan eventScan = new EventScan();
                         eventScan.code = code;
                         eventScan.success = false;
+                        eventScan.processType = "internet";
                         if (dangQuetNhanHang) {
                             eventScan.isImportProcess = true;
                         } else {

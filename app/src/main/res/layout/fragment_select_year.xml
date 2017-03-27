@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.collalab.demoapp.fragment.SelectYearFragment">
+
+    <RadioGroup
+        android:id="@+id/radio_group_method"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp">
+
+        <RadioButton
+            android:id="@+id/radio_2009"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="2009"
+            android:textColor="@color/color_353535" />
+
+        <RadioButton
+            android:id="@+id/radio_2011"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="2011"
+            android:textColor="@color/color_353535" />
+
+        <RadioButton
+            android:id="@+id/radio_2017"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:checked="true"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="2017"
+            android:textColor="@color/color_353535" />
+
+    </RadioGroup>
+
+</LinearLayout>

@@ -8,4 +8,5 @@ public class EventScan {
     public String code;
     public boolean success;
     public boolean isImportProcess;
+    public String processType;
 }

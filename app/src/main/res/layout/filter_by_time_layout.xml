@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:background="@android:color/white"
-    tools:context="com.collalab.demoapp.fragment.YearQuarterMonthFragment">
+    tools:context="com.collalab.demoapp.fragment.FilterTimeFragment">
 
     <RelativeLayout
         android:id="@+id/layout_top_actionbar"

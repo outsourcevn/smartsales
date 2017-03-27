@@ -1,13 +1,11 @@
 package com.collalab.demoapp.activity;
 
-import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.fragment.BanHangFragment;
@@ -15,7 +13,7 @@ import com.collalab.demoapp.fragment.KhoHangFragment;
 import com.collalab.demoapp.fragment.NhanHangFragment;
 import com.collalab.demoapp.fragment.SettingFragment;
 import com.collalab.demoapp.fragment.TraHangFragment;
-import com.collalab.demoapp.fragment.YearQuarterMonthFragment;
+import com.collalab.demoapp.fragment.FilterTimeFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -30,7 +28,7 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
     NhanHangFragment nhanHangFragment;
     TraHangFragment traHangFragment;
     SettingFragment settingFragment;
-    YearQuarterMonthFragment yearQuarterMonthFragment;
+    FilterTimeFragment filterTimeFragment;
     android.support.v4.app.Fragment fragments[] = new Fragment[5];
     FragmentTransaction fragmentTransaction;
     FragmentManager fragmentManager;
@@ -52,7 +50,7 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
         banHangFragment = BanHangFragment.newInstance("", "");
         khoHangFragment = KhoHangFragment.newInstance("", "");
         nhanHangFragment = NhanHangFragment.newInstance("", "");
-        yearQuarterMonthFragment = YearQuarterMonthFragment.newInstance("","");
+        filterTimeFragment = FilterTimeFragment.newInstance("","");
         traHangFragment = TraHangFragment.newInstance("", "");
         settingFragment = SettingFragment.newInstance("", "");
 
@@ -70,8 +68,8 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
                     fragments[0] = khoHangFragment;
                     break;
                 case 1:
-//                    fragments[1] = nhanHangFragment;
-                    fragments[1] = yearQuarterMonthFragment;
+                    fragments[1] = nhanHangFragment;
+//                    fragments[1] = filterTimeFragment;
                     break;
                 case 2:
                     fragments[2] = banHangFragment;
