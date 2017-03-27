@@ -17,6 +17,11 @@ public class ReturnProductEntity extends RealmObject {
 
     }
 
+    public ReturnProductEntity(String product_code, Date created_at) {
+        this.product_code = product_code;
+        this.created_at = created_at;
+    }
+
     public ReturnProductEntity(String product_code, Date created_at, Integer number_product_return) {
         this.product_code = product_code;
         this.created_at = created_at;

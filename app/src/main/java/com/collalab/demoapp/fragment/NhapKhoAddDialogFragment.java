@@ -18,6 +18,7 @@ import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.entity.DateData;
 import com.collalab.demoapp.event.EventNhapHang;
+import com.collalab.demoapp.persistence.PreferenceUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -117,6 +118,11 @@ public class NhapKhoAddDialogFragment extends DialogFragment {
 
     @OnClick(R.id.btn_save)
     public void onSaveClick() {
+
+        if (TextUtils.isEmpty(edtProductCode.getEditableText().toString().trim())) {
+            edtProductCode.setError("Vui lòng nhập mã sản phẩm!");
+        }
+
         EventNhapHang eventNhapHang = new EventNhapHang();
         eventNhapHang.created_at = nhapHangCalendar.getTime();
         eventNhapHang.product_code = edtProductCode.getEditableText().toString();
@@ -132,9 +138,6 @@ public class NhapKhoAddDialogFragment extends DialogFragment {
     private DatePickerDialog.OnDateSetListener onDateSelectListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int year, int month, int day) {
-            // arg1 = year
-            // arg2 = month
-            // arg3 = day
             nhapHangCalendar.set(Calendar.YEAR, year);
             nhapHangCalendar.set(Calendar.MONTH, month);
             nhapHangCalendar.set(Calendar.DAY_OF_MONTH, day);

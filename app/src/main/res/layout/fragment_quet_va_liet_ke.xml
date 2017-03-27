@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:clickable="true"
-    tools:context="com.collalab.demoapp.fragment.MaNhanFragment">
+    tools:context="com.collalab.demoapp.fragment.QuetVaLietKeFragment">
 
     <RelativeLayout
         android:id="@+id/layout_top_actionbar"
@@ -22,6 +22,7 @@
             android:src="@drawable/ic_back" />
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -31,6 +32,15 @@
             android:textSize="18dp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"
+            android:padding="12dp"
+            android:src="@drawable/ic_add" />
+
     </RelativeLayout>
 
     <android.support.design.widget.TabLayout
@@ -39,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_top_actionbar"
         app:tabGravity="fill"
+        app:tabIndicatorHeight="3dp"
         app:tabIndicatorColor="@color/colorPrimary"
         app:tabMode="fixed" />
 
@@ -47,6 +58,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tabs" />
+
+    <FrameLayout
+        android:id="@+id/layout_quet_liet_ke_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
 
 
 </RelativeLayout>

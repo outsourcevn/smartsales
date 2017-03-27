@@ -19,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.collalab.demoapp.R;
+import com.collalab.demoapp.entity.ExportProductEntity;
+import com.collalab.demoapp.event.EventBanHang;
 import com.github.pwittchen.networkevents.library.BusWrapper;
 import com.github.pwittchen.networkevents.library.ConnectivityStatus;
 import com.github.pwittchen.networkevents.library.NetworkEvents;
@@ -28,6 +30,8 @@ import com.google.zxing.Result;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -134,6 +138,10 @@ public class KhachLeFragment extends Fragment implements ZXingScannerView.Result
             public void onClick(View view) {
                 shareViaSMS(productCode);
                 dialog.dismiss();
+                EventBanHang eventBanHang = new EventBanHang();
+                ExportProductEntity exportProductEntity = new ExportProductEntity();
+                exportProductEntity.created_at = Calendar.getInstance().getTime();
+                exportProductEntity.number_product_sold = 1;
                 getActivity().onBackPressed();
             }
         });

@@ -1,5 +1,6 @@
 package com.collalab.demoapp.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -8,7 +9,7 @@ import io.realm.RealmObject;
  * Created by VietMac on 2017-03-24.
  */
 
-public class ImportProductEntity extends RealmObject {
+public class ImportProductEntity extends RealmObject implements Serializable {
     private String product_code;
     private Date created_at;
     private Integer number_product_import;

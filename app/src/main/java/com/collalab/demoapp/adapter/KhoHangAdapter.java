@@ -79,7 +79,7 @@ public class KhoHangAdapter extends AdapterFooterView {
 
     @Override
     public int getDataLength() {
-//        return productEntities != null ? productEntities.size() : 0;
+//        return scanItems != null ? scanItems.size() : 0;
         return 10;
     }
 }

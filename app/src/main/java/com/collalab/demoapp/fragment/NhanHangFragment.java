@@ -1,7 +1,5 @@
 package com.collalab.demoapp.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,11 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.collalab.demoapp.R;
-import com.collalab.demoapp.adapter.KhoHangAdapter;
 import com.collalab.demoapp.adapter.NhapHangAdapter;
 import com.collalab.demoapp.entity.DateData;
 import com.collalab.demoapp.entity.ImportProductEntity;
-import com.collalab.demoapp.entity.ProductEntity;
 import com.collalab.demoapp.event.EventNhapHang;
 
 import org.greenrobot.eventbus.EventBus;
@@ -31,7 +27,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.Realm;
-import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import io.realm.Sort;
 
@@ -175,9 +170,9 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
     NhapHangAdapter.OnItemClick onItemClick = new NhapHangAdapter.OnItemClick() {
         @Override
         public void onItemClick(int position) {
-            MaNhanFragment maNhanFragment = MaNhanFragment.newInstance("","");
+            QuetVaLietKeFragment quetVaLietKeFragment = QuetVaLietKeFragment.newInstance("nhan_hang");
             getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container_nhan_hang, maNhanFragment).addToBackStack(null).commit();
+                    .replace(R.id.fragment_container_nhan_hang, quetVaLietKeFragment).addToBackStack(null).commit();
         }
 
         @Override

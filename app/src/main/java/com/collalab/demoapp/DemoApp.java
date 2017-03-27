@@ -23,6 +23,9 @@ public class DemoApp extends Application {
 
     public static int totalBadge = 5;
 
+    public static int sScanMethodNhanHang = 1;
+    public static int sScanMethodBanHang = 1;
+
     private static Hashtable<String, Typeface> fontCache = new Hashtable<String, Typeface>();
 
     public static Typeface getFont(String name, Context context) {

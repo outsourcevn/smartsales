@@ -11,10 +11,13 @@
     <string name="string_retail_client">Khách lẻ</string>
     <string name="string_notification">Thông báo</string>
     <string name="string_ma_nhan">Mã Nhận</string>
+    <string name="string_ma_ban">Mã Bán</string>
     <string name="string_list_phone">Danh sách số điện thoại</string>
     <string name="string_store_image">Hình ảnh cửa hàng</string>
     <string name="string_company_info">Thông tin công ty</string>
     <string name="string_ban_hang_le">Bán hàng lẻ</string>
+    <string name="string_them_ma">Thêm Mã</string>
+    <string name="string_quet_ma">Quét Mã</string>
 
     <string-array name="themes_array">
         <item>Sand</item>
