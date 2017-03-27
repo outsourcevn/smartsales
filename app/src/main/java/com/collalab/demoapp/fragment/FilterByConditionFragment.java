@@ -85,32 +85,32 @@ public class FilterByConditionFragment extends Fragment {
 
 
             ImportProductEntity product2 = new ImportProductEntity();
-            product1.setProduct_code("87349580249");
-            product1.setCreated_at(calendar.getTime());
+            product2.setProduct_code("87349580249");
+            product2.setCreated_at(calendar.getTime());
 
             PeriodTime time2009 = new PeriodTime("2009", Arrays.asList(product1, product2));
 
             calendar.set(Calendar.YEAR, 2011);
             ImportProductEntity product3 = new ImportProductEntity();
-            product1.setProduct_code("16349812345");
-            product1.setCreated_at(calendar.getTime());
+            product3.setProduct_code("16349812345");
+            product3.setCreated_at(calendar.getTime());
 
 
             ImportProductEntity product4 = new ImportProductEntity();
-            product1.setProduct_code("12346743245");
-            product1.setCreated_at(calendar.getTime());
+            product4.setProduct_code("12346743245");
+            product4.setCreated_at(calendar.getTime());
 
             PeriodTime time2011 = new PeriodTime("2011", Arrays.asList(product3, product4));
 
             calendar.set(Calendar.YEAR, 2017);
             ImportProductEntity product5 = new ImportProductEntity();
-            product1.setProduct_code("88092148092");
-            product1.setCreated_at(calendar.getTime());
+            product5.setProduct_code("88092148092");
+            product5.setCreated_at(calendar.getTime());
 
 
             ImportProductEntity product6 = new ImportProductEntity();
-            product1.setProduct_code("87349580249");
-            product1.setCreated_at(calendar.getTime());
+            product6.setProduct_code("87349580249");
+            product6.setCreated_at(calendar.getTime());
             PeriodTime time2017 = new PeriodTime("2017", Arrays.asList(product5, product6));
 
             listPeriod = Arrays.asList(time2009, time2011, time2017);
@@ -124,32 +124,32 @@ public class FilterByConditionFragment extends Fragment {
 
             calendar.set(Calendar.MONTH, 2);
             ImportProductEntity product2 = new ImportProductEntity();
-            product1.setProduct_code("87349580249");
-            product1.setCreated_at(calendar.getTime());
+            product2.setProduct_code("87349580249");
+            product2.setCreated_at(calendar.getTime());
 
             PeriodTime time2009 = new PeriodTime("Quý 1", Arrays.asList(product1, product2));
 
             calendar.set(Calendar.MONTH, 4);
             ImportProductEntity product3 = new ImportProductEntity();
-            product1.setProduct_code("16349812345");
-            product1.setCreated_at(calendar.getTime());
+            product3.setProduct_code("16349812345");
+            product3.setCreated_at(calendar.getTime());
 
             calendar.set(Calendar.MONTH, 6);
             ImportProductEntity product4 = new ImportProductEntity();
-            product1.setProduct_code("12346743245");
-            product1.setCreated_at(calendar.getTime());
+            product4.setProduct_code("12346743245");
+            product4.setCreated_at(calendar.getTime());
 
             PeriodTime time2011 = new PeriodTime("Quý 2", Arrays.asList(product3, product4));
 
             calendar.set(Calendar.MONTH, 10);
             ImportProductEntity product5 = new ImportProductEntity();
-            product1.setProduct_code("88092148092");
-            product1.setCreated_at(calendar.getTime());
+            product5.setProduct_code("88092148092");
+            product5.setCreated_at(calendar.getTime());
 
             calendar.set(Calendar.MONTH, 12);
             ImportProductEntity product6 = new ImportProductEntity();
-            product1.setProduct_code("87349580249");
-            product1.setCreated_at(calendar.getTime());
+            product6.setProduct_code("87349580249");
+            product6.setCreated_at(calendar.getTime());
             PeriodTime time2017 = new PeriodTime("Quý 4", Arrays.asList(product5, product6));
 
             listPeriod = Arrays.asList(time2009, time2011, time2017);
@@ -161,31 +161,31 @@ public class FilterByConditionFragment extends Fragment {
             product1.setCreated_at(calendar.getTime());
 
             ImportProductEntity product2 = new ImportProductEntity();
-            product1.setProduct_code("87349580249");
-            product1.setCreated_at(calendar.getTime());
+            product2.setProduct_code("87349580249");
+            product2.setCreated_at(calendar.getTime());
 
             PeriodTime time2009 = new PeriodTime("Tháng 1", Arrays.asList(product1, product2));
 
             calendar.set(Calendar.MONTH, 2);
             ImportProductEntity product3 = new ImportProductEntity();
-            product1.setProduct_code("16349812345");
-            product1.setCreated_at(calendar.getTime());
+            product3.setProduct_code("16349812345");
+            product3.setCreated_at(calendar.getTime());
 
 
             ImportProductEntity product4 = new ImportProductEntity();
-            product1.setProduct_code("12346743245");
-            product1.setCreated_at(calendar.getTime());
+            product4.setProduct_code("12346743245");
+            product4.setCreated_at(calendar.getTime());
 
             PeriodTime time2011 = new PeriodTime("Tháng 2", Arrays.asList(product3, product4));
 
             calendar.set(Calendar.MONTH, 3);
             ImportProductEntity product5 = new ImportProductEntity();
-            product1.setProduct_code("88092148092");
-            product1.setCreated_at(calendar.getTime());
+            product5.setProduct_code("88092148092");
+            product5.setCreated_at(calendar.getTime());
 
             ImportProductEntity product6 = new ImportProductEntity();
-            product1.setProduct_code("87349580249");
-            product1.setCreated_at(calendar.getTime());
+            product6.setProduct_code("87349580249");
+            product6.setCreated_at(calendar.getTime());
             PeriodTime time2017 = new PeriodTime("Tháng 3", Arrays.asList(product5, product6));
 
             listPeriod = Arrays.asList(time2009, time2011, time2017);
