@@ -47,14 +47,10 @@ public class ScanAdapter extends AdapterFooterView {
         TextView tvCode;
         @BindView(R.id.tv_status)
         TextView tvStatus;
-        @BindView(R.id.layout_do_action)
-        View layoutDoAction;
         @BindView(R.id.btn_delete)
         View btnDelete;
         @BindView(R.id.btn_send_internet)
         View btnSendInternet;
-        @BindView(R.id.btn_send_sms)
-        View btnSendSMS;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -69,15 +65,13 @@ public class ScanAdapter extends AdapterFooterView {
         viewHolder.tvCode.setText("Mã: " + scanItem.getCode());
 
         if (scanItem.isSuccess()) {
-            if("sms".equalsIgnoreCase(scanItem.getProcessType())) {
-                viewHolder.tvStatus.setText("Trạng thái: Đã xử lý (Bằng gửi SMS)");
-            } else if("internet".equalsIgnoreCase(scanItem.getProcessType())) {
-                viewHolder.tvStatus.setText("Trạng thái: Đã xử lý (Bằng gửi qua Internet)");
-            }
-            viewHolder.layoutDoAction.setVisibility(View.GONE);
+            viewHolder.tvStatus.setText("Trạng thái: Đã xử lý");
+            viewHolder.btnDelete.setVisibility(View.GONE);
+            viewHolder.btnSendInternet.setVisibility(View.GONE);
         } else {
             viewHolder.tvStatus.setText("Trạng thái: Chưa xử lý");
-            viewHolder.layoutDoAction.setVisibility(View.VISIBLE);
+            viewHolder.btnDelete.setVisibility(View.VISIBLE);
+            viewHolder.btnSendInternet.setVisibility(View.VISIBLE);
         }
         viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,19 +81,10 @@ public class ScanAdapter extends AdapterFooterView {
             }
         });
 
-        viewHolder.btnSendSMS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(onScanItemAction != null) {
-                    onScanItemAction.onSendSMS(position);
-                }
-            }
-        });
-
         viewHolder.btnSendInternet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(onScanItemAction != null) {
+                if (onScanItemAction != null) {
                     onScanItemAction.onSendInternet(position);
                 }
             }

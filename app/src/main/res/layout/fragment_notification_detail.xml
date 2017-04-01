@@ -1,11 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:clickable="true"
-    tools:context="com.collalab.demoapp.fragment.QuetVaLietKeFragment">
+    tools:context="com.collalab.demoapp.fragment.NotificationDetailFragment">
 
     <RelativeLayout
         android:id="@+id/layout_top_actionbar"
@@ -22,44 +21,53 @@
             android:src="@drawable/ic_back" />
 
         <TextView
-            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/string_ds_hang"
+            android:text="@string/string_content"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:adjustViewBounds="true"
-            android:padding="12dp"
-            android:src="@drawable/ic_more" />
-
     </RelativeLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/layout_top_actionbar"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/layout_quet_liet_ke_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="This is Title"
+                android:textColor="@color/color_353535"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tv_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:gravity="fill_horizontal"
+                android:lineSpacingExtra="3dp"
+                android:padding="12dp"
+                android:text="This is content"
+                android:textColor="@color/color_353535"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

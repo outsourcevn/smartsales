@@ -1,9 +1,7 @@
 package com.collalab.demoapp.adapter;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
-import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,29 +9,22 @@ import android.widget.TextView;
 
 import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
-import com.collalab.demoapp.entity.ImportProductEntity;
-import com.collalab.demoapp.entity.ProductEntity;
-import com.collalab.demoapp.widget.RichTextView;
+import com.collalab.demoapp.entity.ExportProductEntity;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by VietMac on 2017-03-24.
- */
-
-public class NhapHangAdapter extends AdapterFooterView {
+public class CodeYearAdapter extends AdapterFooterView {
 
     Context context;
-    ArrayList<ImportProductEntity> productEntities;
+    ArrayList<ExportProductEntity> exportProductEntities;
 
-    public NhapHangAdapter(Context context, ArrayList<ImportProductEntity> productEntities) {
+    public CodeYearAdapter(Context context, ArrayList<ExportProductEntity> productEntities) {
         super(context);
         this.context = context;
-        this.productEntities = productEntities;
+        this.exportProductEntities = productEntities;
     }
 
     OnItemClick onItemClick;
@@ -49,14 +40,18 @@ public class NhapHangAdapter extends AdapterFooterView {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_import_date)
-        RichTextView tvImportedDate;
         @BindView(R.id.tv_product_id)
-        RichTextView tvProductCode;
-        @BindView(R.id.btn_edit)
-        View btnEdit;
+        TextView tvProductId;
+        @BindView(R.id.tv_import_date)
+        TextView tvDate;
         @BindView(R.id.btn_delete)
         View btnDelete;
+        @BindView(R.id.tv_num_process)
+        TextView tvNumProceeded;
+        @BindView(R.id.tv_num_not_process)
+        TextView tvNumNotProceeded;
+        @BindView(R.id.btn_edit)
+        View btnEdit;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -68,11 +63,11 @@ public class NhapHangAdapter extends AdapterFooterView {
     public void onBindViewWithData(RecyclerView.ViewHolder holderRecycle, final int position) {
         int type = getItemViewType(position);
         if (type == TYPE_FOOTER) {
-            if (productEntities == null || productEntities.size() == 0) {
-                hideFooterWithText("Chưa có mã hàng nào được nhập!");
+            if (exportProductEntities == null || exportProductEntities.size() == 0) {
+                hideFooterWithText("Chưa có mã hàng nào được bán!");
             }
         } else {
-            final ImportProductEntity productEntity = productEntities.get(position);
+            final ExportProductEntity exportProductEntity = exportProductEntities.get(position);
             ViewHolder viewHolder = (ViewHolder) holderRecycle;
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -85,7 +80,7 @@ public class NhapHangAdapter extends AdapterFooterView {
             viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    productEntities.remove(position);
+                    exportProductEntities.remove(position);
                     notifyItemRangeRemoved(position, 1);
                 }
             });
@@ -97,22 +92,22 @@ public class NhapHangAdapter extends AdapterFooterView {
                     }
                 }
             });
-
-            viewHolder.tvImportedDate.setText("Ngày: " + Common.getDateInString(productEntity.getCreated_at()));
-            viewHolder.tvProductCode.setText("Mã nhận hàng: " + productEntity.getProduct_code());
+            viewHolder.tvNumProceeded.setText("Đã xử lý: 8");
+            viewHolder.tvNumNotProceeded.setText("Chưa xử lý: 3");
+            viewHolder.tvDate.setText("Ngày: " + Common.getDateInString(exportProductEntity.created_at));
+            viewHolder.tvProductId.setText("Mã: 15061994");
         }
     }
 
     @Override
     public RecyclerView.ViewHolder inflateView(ViewGroup parent) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_nhan_hang_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_code_year_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
     public int getDataLength() {
-//        return scanItems != null ? scanItems.size() : 0;
-        return productEntities.size();
+        return exportProductEntities.size();
     }
 }

@@ -25,20 +25,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/string_nhan_hang"
+            android:text="@string/string_theo_doi"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:adjustViewBounds="true"
-            android:padding="12dp"
-            android:src="@drawable/ic_add" />
     </RelativeLayout>
 
     <android.support.design.widget.TabLayout

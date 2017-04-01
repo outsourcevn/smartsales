@@ -3,7 +3,6 @@ package com.collalab.demoapp.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.collalab.demoapp.R;
-import com.collalab.demoapp.adapter.NhapHangAdapter;
+import com.collalab.demoapp.adapter.KichHoatAdapter;
 import com.collalab.demoapp.entity.DateData;
 import com.collalab.demoapp.entity.ImportProductEntity;
 import com.collalab.demoapp.event.EventNhapHang;
@@ -31,7 +30,7 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 
 
-public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class KichHoatFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -45,12 +44,12 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
     @BindView(R.id.main_swipe_refresh_layout)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
-    NhapHangAdapter nhapHangAdapter;
+    KichHoatAdapter kichHoatAdapter;
     ArrayList<ImportProductEntity> listProduct = new ArrayList<>();
 
     Realm realm;
 
-    public NhanHangFragment() {
+    public KichHoatFragment() {
         // Required empty public constructor
     }
 
@@ -62,8 +61,8 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
         }
     }
 
-    public static NhanHangFragment newInstance(String param1, String param2) {
-        NhanHangFragment fragment = new NhanHangFragment();
+    public static KichHoatFragment newInstance(String param1, String param2) {
+        KichHoatFragment fragment = new KichHoatFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -84,7 +83,7 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_nhan_hang, container, false);
+        View view = inflater.inflate(R.layout.fragment_kich_hoat, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -101,9 +100,9 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
         mSwipeRefreshLayout.setOnRefreshListener(this);
         recyclerView.setLayoutManager(mLayoutManager);
 
-        nhapHangAdapter = new NhapHangAdapter(getContext(), listProduct);
-        nhapHangAdapter.setOnItemClick(onItemClick);
-        recyclerView.setAdapter(nhapHangAdapter);
+        kichHoatAdapter = new KichHoatAdapter(getContext(), listProduct);
+        kichHoatAdapter.setOnItemClick(onItemClick);
+        recyclerView.setAdapter(kichHoatAdapter);
 
 //        getAllImportedProduct();
     }
@@ -122,14 +121,14 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
     public void onNotificationClick() {
         FilterTimeFragment filterTimeFragment = FilterTimeFragment.newInstance("", "");
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container_nhan_hang, filterTimeFragment).addToBackStack(null).commit();
+                .replace(R.id.fragment_container_kich_hoat, filterTimeFragment).addToBackStack(null).commit();
     }
 
     @OnClick(R.id.btn_add)
     public void onAddClick() {
-        ThemMaNhanHang notificationFragment = ThemMaNhanHang.newInstance("", "");
+        ThemMaKichHoat notificationFragment = ThemMaKichHoat.newInstance("", "");
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container_nhan_hang, notificationFragment).addToBackStack(null).commit();
+                .replace(R.id.fragment_container_kich_hoat, notificationFragment).addToBackStack(null).commit();
     }
 
     @Subscribe
@@ -141,10 +140,10 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         listProduct.add(importProductEntity);
 
-        nhapHangAdapter.notifyItemInserted(listProduct.size());
-        nhapHangAdapter.notifyDataSetChanged();
+        kichHoatAdapter.notifyItemInserted(listProduct.size());
+        kichHoatAdapter.notifyDataSetChanged();
         if (listProduct.size() > 0) {
-            nhapHangAdapter.hideFooter();
+            kichHoatAdapter.hideFooter();
         }
     }
 
@@ -167,12 +166,12 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
         }
     }
 
-    NhapHangAdapter.OnItemClick onItemClick = new NhapHangAdapter.OnItemClick() {
+    KichHoatAdapter.OnItemClick onItemClick = new KichHoatAdapter.OnItemClick() {
         @Override
         public void onItemClick(int position) {
             QuetVaLietKeFragment quetVaLietKeFragment = QuetVaLietKeFragment.newInstance("nhan_hang");
             getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container_nhan_hang, quetVaLietKeFragment).addToBackStack(null).commit();
+                    .replace(R.id.fragment_container_kich_hoat, quetVaLietKeFragment).addToBackStack(null).commit();
         }
 
         @Override
@@ -186,9 +185,9 @@ public class NhanHangFragment extends Fragment implements SwipeRefreshLayout.OnR
                 dateData.month = calendar.get(Calendar.MONTH);
                 dateData.day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                ThemMaNhanHang notificationFragment = ThemMaNhanHang.newInstance(importProductEntity.getProduct_code(), dateData);
+                ThemMaKichHoat notificationFragment = ThemMaKichHoat.newInstance(importProductEntity.getProduct_code(), dateData);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container_nhan_hang, notificationFragment).addToBackStack(null).commit();
+                        .replace(R.id.fragment_container_kich_hoat, notificationFragment).addToBackStack(null).commit();
             }
         }
     };

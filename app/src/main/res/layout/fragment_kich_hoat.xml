@@ -5,7 +5,7 @@
     android:background="@android:color/white"
     android:clickable="true"
     android:orientation="vertical"
-    tools:context="com.collalab.demoapp.fragment.NhanHangFragment">
+    tools:context="com.collalab.demoapp.fragment.KichHoatFragment">
 
     <RelativeLayout
         android:id="@+id/layout_top_actionbar"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/string_nhan_hang"
+            android:text="@string/string_kich_hoat"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="18dp"
@@ -64,7 +64,7 @@
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <FrameLayout
-        android:id="@+id/fragment_container_nhan_hang"
+        android:id="@+id/fragment_container_kich_hoat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>
 

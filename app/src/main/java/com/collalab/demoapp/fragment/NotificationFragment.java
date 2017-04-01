@@ -112,8 +112,15 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
                     EventBus.getDefault().post(eventNotification);
                 }
             }
+            showDetailContent(notificationList.get(position));
         }
     };
+
+    private void showDetailContent(NotificationEntity notificationEntity) {
+        NotificationDetailFragment notificationDetailFragment = NotificationDetailFragment.newInstance(notificationEntity);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.notification_fragment_container, notificationDetailFragment).addToBackStack(null).commit();
+    }
 
     private void initDummyData() {
         notificationList.add(new NotificationEntity(getResources().getString(R.string.string_sample_title_1), getResources().getString(R.string.string_sample_content_1), new Date(), false));

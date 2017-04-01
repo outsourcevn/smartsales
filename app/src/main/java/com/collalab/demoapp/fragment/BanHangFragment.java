@@ -11,11 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.collalab.demoapp.R;
-import com.collalab.demoapp.adapter.BanHangAdapter;
-import com.collalab.demoapp.adapter.KhoHangAdapter;
+import com.collalab.demoapp.adapter.CodeYearAdapter;
 import com.collalab.demoapp.entity.ExportProductEntity;
 import com.collalab.demoapp.event.EventBanHang;
-import com.collalab.demoapp.event.EventFilter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -41,7 +39,7 @@ public class BanHangFragment extends Fragment implements SwipeRefreshLayout.OnRe
     RecyclerView recyclerView;
     @BindView(R.id.main_swipe_refresh_layout)
     SwipeRefreshLayout mSwipeRefreshLayout;
-    BanHangAdapter banHangAdapter;
+    CodeYearAdapter codeYearAdapter;
 
     public BanHangFragment() {
 
@@ -93,10 +91,10 @@ public class BanHangFragment extends Fragment implements SwipeRefreshLayout.OnRe
         mSwipeRefreshLayout.setOnRefreshListener(this);
         recyclerView.setLayoutManager(mLayoutManager);
 
-        banHangAdapter = new BanHangAdapter(getContext(), exportProductEntities);
-        banHangAdapter.setOnItemClick(mOnItemClick);
-        recyclerView.setAdapter(banHangAdapter);
-        banHangAdapter.hideFooter();
+        codeYearAdapter = new CodeYearAdapter(getContext(), exportProductEntities);
+        codeYearAdapter.setOnItemClick(mOnItemClick);
+        recyclerView.setAdapter(codeYearAdapter);
+        codeYearAdapter.hideFooter();
     }
 
     @OnClick(R.id.tv_retail)
@@ -136,7 +134,7 @@ public class BanHangFragment extends Fragment implements SwipeRefreshLayout.OnRe
     @Subscribe
     public void onEvent(EventBanHang eventBanHang) {
         exportProductEntities.add(eventBanHang.exportProductEntity);
-        banHangAdapter.notifyItemInserted(exportProductEntities.size());
+        codeYearAdapter.notifyItemInserted(exportProductEntities.size());
     }
 
     @Override
@@ -145,7 +143,7 @@ public class BanHangFragment extends Fragment implements SwipeRefreshLayout.OnRe
         EventBus.getDefault().unregister(this);
     }
 
-    BanHangAdapter.OnItemClick mOnItemClick = new BanHangAdapter.OnItemClick() {
+    CodeYearAdapter.OnItemClick mOnItemClick = new CodeYearAdapter.OnItemClick() {
         @Override
         public void onItemClick(int position) {
             QuetVaLietKeFragment quetVaLietKeFragment = QuetVaLietKeFragment.newInstance("ban_hang");

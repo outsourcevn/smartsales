@@ -6,7 +6,7 @@
     android:layout_marginRight="10dp"
     android:orientation="vertical">
 
-    <com.collalab.demoapp.widget.RichTextView
+    <TextView
         android:id="@+id/tv_product_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:textColor="@color/color_353535"
         android:textSize="15dp" />
 
-    <com.collalab.demoapp.widget.RichTextView
+    <TextView
         android:id="@+id/tv_import_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             android:layout_weight="1"
             android:drawablePadding="5dp"
             android:gravity="center"
-            android:text="Đã xử lý: 6"
+            android:text="Số mã đã xử lý:"
             android:textColor="@color/color_353535"
             android:textSize="15dp" />
 
@@ -58,7 +58,7 @@
             android:layout_weight="1"
             android:drawablePadding="5dp"
             android:gravity="center"
-            android:text="Chưa xử lý: 1"
+            android:text="Số mã chưa xử lý"
             android:textColor="@color/color_353535"
             android:textSize="15dp" />
 
@@ -71,14 +71,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tv_product_id"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:adjustViewBounds="true"
             android:src="@drawable/icon_edit" />
 
         <ImageView
@@ -86,7 +86,6 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:adjustViewBounds="true"
             android:src="@drawable/ic_delete_item" />
     </LinearLayout>
 

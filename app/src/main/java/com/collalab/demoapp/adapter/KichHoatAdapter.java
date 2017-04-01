@@ -11,11 +11,12 @@ import android.widget.TextView;
 
 import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
-import com.collalab.demoapp.entity.ExportProductEntity;
 import com.collalab.demoapp.entity.ImportProductEntity;
+import com.collalab.demoapp.entity.ProductEntity;
 import com.collalab.demoapp.widget.RichTextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,15 +25,15 @@ import butterknife.ButterKnife;
  * Created by VietMac on 2017-03-24.
  */
 
-public class BanHangAdapter extends AdapterFooterView {
+public class KichHoatAdapter extends AdapterFooterView {
 
     Context context;
-    ArrayList<ExportProductEntity> exportProductEntities;
+    ArrayList<ImportProductEntity> productEntities;
 
-    public BanHangAdapter(Context context, ArrayList<ExportProductEntity> productEntities) {
+    public KichHoatAdapter(Context context, ArrayList<ImportProductEntity> productEntities) {
         super(context);
         this.context = context;
-        this.exportProductEntities = productEntities;
+        this.productEntities = productEntities;
     }
 
     OnItemClick onItemClick;
@@ -48,18 +49,14 @@ public class BanHangAdapter extends AdapterFooterView {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_date)
-        TextView tvDate;
-        @BindView(R.id.tv_number)
-        TextView tvNumber;
-        @BindView(R.id.tv_code)
-        TextView tvCode;
-        @BindView(R.id.tv_retail)
-        TextView tvRetail;
-        @BindView(R.id.btn_delete)
-        View btnDelete;
+        @BindView(R.id.tv_import_date)
+        RichTextView tvImportedDate;
+        @BindView(R.id.tv_product_id)
+        RichTextView tvProductCode;
         @BindView(R.id.btn_edit)
         View btnEdit;
+        @BindView(R.id.btn_delete)
+        View btnDelete;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -71,11 +68,11 @@ public class BanHangAdapter extends AdapterFooterView {
     public void onBindViewWithData(RecyclerView.ViewHolder holderRecycle, final int position) {
         int type = getItemViewType(position);
         if (type == TYPE_FOOTER) {
-            if (exportProductEntities == null || exportProductEntities.size() == 0) {
-                hideFooterWithText("Chưa có mã hàng nào được bán!");
+            if (productEntities == null || productEntities.size() == 0) {
+                hideFooterWithText("Chưa có mã hàng nào được nhập!");
             }
         } else {
-            final ExportProductEntity exportProductEntity = exportProductEntities.get(position);
+            final ImportProductEntity productEntity = productEntities.get(position);
             ViewHolder viewHolder = (ViewHolder) holderRecycle;
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -88,7 +85,7 @@ public class BanHangAdapter extends AdapterFooterView {
             viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    exportProductEntities.remove(position);
+                    productEntities.remove(position);
                     notifyItemRangeRemoved(position, 1);
                 }
             });
@@ -101,23 +98,14 @@ public class BanHangAdapter extends AdapterFooterView {
                 }
             });
 
-            if (exportProductEntity.isRetail) {
-                viewHolder.tvCode.setVisibility(View.GONE);
-                viewHolder.tvRetail.setVisibility(View.VISIBLE);
-            } else {
-                viewHolder.tvRetail.setVisibility(View.GONE);
-                viewHolder.tvCode.setVisibility(View.VISIBLE);
-                viewHolder.tvCode.setText(exportProductEntity.code);
-            }
-
-            viewHolder.tvNumber.setText("Số lượng: " + exportProductEntity.number_product_sold);
-            viewHolder.tvDate.setText("Ngày: " + Common.getDateInString(exportProductEntity.created_at));
+            viewHolder.tvImportedDate.setText("Ngày: " + Common.getDateInString(productEntity.getCreated_at()));
+            viewHolder.tvProductCode.setText("Mã: " + productEntity.getProduct_code());
         }
     }
 
     @Override
     public RecyclerView.ViewHolder inflateView(ViewGroup parent) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_ban_hang_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_nhan_hang_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
@@ -125,6 +113,6 @@ public class BanHangAdapter extends AdapterFooterView {
     @Override
     public int getDataLength() {
 //        return scanItems != null ? scanItems.size() : 0;
-        return exportProductEntities.size();
+        return productEntities.size();
     }
 }

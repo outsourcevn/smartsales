@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.entity.ImportProductEntity;
@@ -58,7 +59,7 @@ public class FilterTimeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        if(!EventBus.getDefault().isRegistered(this)) {
+        if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
     }
@@ -86,6 +87,25 @@ public class FilterTimeFragment extends Fragment {
         adapter = new ViewPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (TextUtils.isEmpty(selectYear) && position == 3) {
+                    Toast.makeText(getContext(), "Vui lòng chọn năm trước!", Toast.LENGTH_SHORT).show();
+                    viewPager.setCurrentItem(0);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @OnClick(R.id.btn_notification)
@@ -93,13 +113,6 @@ public class FilterTimeFragment extends Fragment {
         NotificationFragment notificationFragment = NotificationFragment.newInstance("", "");
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container_year_quarter_month, notificationFragment).addToBackStack(null).commit();
-    }
-
-    @OnClick(R.id.btn_add)
-    public void onAddClick() {
-        NhapKhoAddDialogFragment editNameDialogFragment = new NhapKhoAddDialogFragment();
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container_year_quarter_month, editNameDialogFragment).addToBackStack(null).commit();
     }
 
     @Subscribe
@@ -115,7 +128,7 @@ public class FilterTimeFragment extends Fragment {
     @Subscribe
     public void onEvent(EventSelectYear eventSelectYear) {
         selectYear = eventSelectYear.selectedYear;
-        if(adapter != null) {
+        if (adapter != null) {
             adapter.notifyDataSetChanged();
         }
 
@@ -137,7 +150,9 @@ public class FilterTimeFragment extends Fragment {
                 case 2:
                     return FilterByConditionFragment.newInstance(2, listProduct);
                 case 3:
-                    return FilterByConditionFragment.newInstance(1, listProduct);
+                    if (!TextUtils.isEmpty(selectYear)) {
+                        return CodeByYearFragment.newInstance(Integer.valueOf(selectYear));
+                    }
             }
             return new Fragment();
         }

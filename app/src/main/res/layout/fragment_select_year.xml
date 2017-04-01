@@ -37,7 +37,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
-            android:checked="true"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="2017"

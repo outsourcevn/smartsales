@@ -26,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ThemMaNhanHang extends Fragment {
+public class ThemMaKichHoat extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -45,16 +45,16 @@ public class ThemMaNhanHang extends Fragment {
 
     ExportProductEntity exportProductEntity;
 
-    public ThemMaNhanHang() {
+    public ThemMaKichHoat() {
     }
 
-    public static ThemMaNhanHang newInstance(String param1, String param2) {
-        ThemMaNhanHang fragment = new ThemMaNhanHang();
+    public static ThemMaKichHoat newInstance(String param1, String param2) {
+        ThemMaKichHoat fragment = new ThemMaKichHoat();
         return fragment;
     }
 
-    public static ThemMaNhanHang newInstance(String productCode, DateData createdAt) {
-        ThemMaNhanHang fragment = new ThemMaNhanHang();
+    public static ThemMaKichHoat newInstance(String productCode, DateData createdAt) {
+        ThemMaKichHoat fragment = new ThemMaKichHoat();
         Bundle args = new Bundle();
         args.putString("product_code", productCode);
         args.putSerializable("created_at", createdAt);
@@ -62,8 +62,8 @@ public class ThemMaNhanHang extends Fragment {
         return fragment;
     }
 
-    public static ThemMaNhanHang newInstance(ExportProductEntity exportProductEntity) {
-        ThemMaNhanHang fragment = new ThemMaNhanHang();
+    public static ThemMaKichHoat newInstance(ExportProductEntity exportProductEntity) {
+        ThemMaKichHoat fragment = new ThemMaKichHoat();
         Bundle args = new Bundle();
         args.putSerializable("export_product", exportProductEntity);
         fragment.setArguments(args);
@@ -91,7 +91,7 @@ public class ThemMaNhanHang extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_add_nhap_hang, container, false);
+        View view = inflater.inflate(R.layout.layout_add_ma_kich_hoat, container, false);
         ButterKnife.bind(this, view);
         return view;
     }

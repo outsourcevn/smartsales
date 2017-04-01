@@ -3,6 +3,7 @@
     <string name="string_icon_arrow_down">&#xf107;</string>
     <string name="string_icon_arrow_up">&#xf106;</string>
     <string name="string_kho_hang">Kho hàng</string>
+    <string name="string_kich_hoat">Kích hoạt</string>
     <string name="string_nhan_hang">Nhận hàng</string>
     <string name="string_ban_hang">Bán hàng</string>
     <string name="string_nhan_hang_tra">Trả hàng</string>
@@ -11,6 +12,7 @@
     <string name="string_retail_client">Khách lẻ</string>
     <string name="string_notification">Thông báo</string>
     <string name="string_ma_nhan">Mã Nhận</string>
+    <string name="string_ds_hang">Danh sách hàng</string>
     <string name="string_ma_ban">Mã Bán</string>
     <string name="string_list_phone">Danh sách số điện thoại</string>
     <string name="string_store_image">Hình ảnh cửa hàng</string>
@@ -19,6 +21,8 @@
     <string name="string_them_ma">Thêm Mã</string>
     <string name="string_quet_ma">Quét Mã</string>
     <string name="string_filter_by_time">Lọc thời gian</string>
+    <string name="string_content">Nội dung</string>
+    <string name="string_theo_doi">Theo dõi</string>
 
     <string-array name="themes_array">
         <item>Sand</item>

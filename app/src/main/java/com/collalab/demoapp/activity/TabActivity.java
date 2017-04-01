@@ -10,7 +10,7 @@ import android.os.Bundle;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.fragment.BanHangFragment;
 import com.collalab.demoapp.fragment.KhoHangFragment;
-import com.collalab.demoapp.fragment.NhanHangFragment;
+import com.collalab.demoapp.fragment.KichHoatFragment;
 import com.collalab.demoapp.fragment.SettingFragment;
 import com.collalab.demoapp.fragment.TraHangFragment;
 import com.collalab.demoapp.fragment.FilterTimeFragment;
@@ -25,11 +25,11 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
 
     BanHangFragment banHangFragment;
     KhoHangFragment khoHangFragment;
-    NhanHangFragment nhanHangFragment;
+    KichHoatFragment kichHoatFragment;
     TraHangFragment traHangFragment;
     SettingFragment settingFragment;
     FilterTimeFragment filterTimeFragment;
-    android.support.v4.app.Fragment fragments[] = new Fragment[5];
+    android.support.v4.app.Fragment fragments[] = new Fragment[3];
     FragmentTransaction fragmentTransaction;
     FragmentManager fragmentManager;
 
@@ -49,14 +49,16 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
     private void initView() {
         banHangFragment = BanHangFragment.newInstance("", "");
         khoHangFragment = KhoHangFragment.newInstance("", "");
-        nhanHangFragment = NhanHangFragment.newInstance("", "");
-        filterTimeFragment = FilterTimeFragment.newInstance("","");
+        kichHoatFragment = KichHoatFragment.newInstance("", "");
+        filterTimeFragment = FilterTimeFragment.newInstance("", "");
         traHangFragment = TraHangFragment.newInstance("", "");
         settingFragment = SettingFragment.newInstance("", "");
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
 
+        addTabFragment(2);
+        addTabFragment(1);
         addTabFragment(0);
     }
 
@@ -68,17 +70,17 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
                     fragments[0] = khoHangFragment;
                     break;
                 case 1:
-                    fragments[1] = nhanHangFragment;
+                    fragments[1] = kichHoatFragment;
 //                    fragments[1] = filterTimeFragment;
                     break;
+//                case 2:
+//                    fragments[2] = banHangFragment;
+//                    break;
+//                case 3:
+//                    fragments[3] = traHangFragment;
+//                    break;
                 case 2:
-                    fragments[2] = banHangFragment;
-                    break;
-                case 3:
-                    fragments[3] = traHangFragment;
-                    break;
-                case 4:
-                    fragments[4] = settingFragment;
+                    fragments[2] = settingFragment;
                     break;
                 default:
                     break;
@@ -89,7 +91,7 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
             fragments[id].setUserVisibleHint(true);
         } else {
             fragmentTransaction = fragmentManager.beginTransaction();
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 3; i++) {
                 if (i == id) {
                     fragmentTransaction.show(fragments[i]);
                     fragments[i].setUserVisibleHint(true);
@@ -124,14 +126,16 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
         switch (tabId) {
             case R.id.action_kho_hang:
                 return 0;
-            case R.id.action_nhan_hang:
+//            case R.id.action_nhan_hang:
+//                return 1;
+//            case R.id.action_ban_hang:
+//                return 2;
+//            case R.id.action_nhan_hang_tra:
+//                return 3;
+            case R.id.action_kich_hoat:
                 return 1;
-            case R.id.action_ban_hang:
-                return 2;
-            case R.id.action_nhan_hang_tra:
-                return 3;
             case R.id.action_cai_dat:
-                return 4;
+                return 2;
             default:
                 return 0;
         }

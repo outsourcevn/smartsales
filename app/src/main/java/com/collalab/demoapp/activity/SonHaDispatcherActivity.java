@@ -23,7 +23,8 @@ public class SonHaDispatcherActivity extends AppCompatActivity {
             if(isFirstTime) {
                 intent = new Intent(SonHaDispatcherActivity.this,MainActivity.class);
             } else {
-                intent = new Intent(SonHaDispatcherActivity.this,LoginActivity.class);
+//                intent = new Intent(SonHaDispatcherActivity.this,LoginActivity.class);
+                intent = new Intent(SonHaDispatcherActivity.this,MainActivity.class);
             }
         }
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);

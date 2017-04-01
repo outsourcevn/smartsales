@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.cengalabs.flatui.views.FlatToggleButton;
 import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.persistence.PreferenceUtils;
@@ -21,8 +22,8 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.tv_icon_show_hide)
-    AwesomeFontTextView tvShowHide;
+    @BindView(R.id.toggle_checked_enabled)
+    FlatToggleButton toggleButton;
 
     @BindView(R.id.layout_register)
     ViewGroup layoutRegisterPhone;
@@ -43,19 +44,19 @@ public class MainActivity extends AppCompatActivity {
         PreferenceUtils.init(this);
     }
 
-    @OnClick(R.id.tv_icon_show_hide)
+    @OnClick(R.id.toggle_checked_enabled)
     public void onHideShowClick() {
         TransitionManager.beginDelayedTransition(layoutRegisterPhone);
-        if (isShowSubPhone) {
+        if (toggleButton.isChecked()) {
             edtSubPhone.setVisibility(View.GONE);
             edtMainPhone.setEnabled(true);
+            edtMainPhone.setBackground(getResources().getDrawable(R.drawable.bg_edt_rounded_white_solid));
             isShowSubPhone = false;
-            tvShowHide.setText(getResources().getString(R.string.string_icon_arrow_down));
         } else {
             edtSubPhone.setVisibility(View.VISIBLE);
             edtMainPhone.setEnabled(false);
+            edtMainPhone.setBackground(getResources().getDrawable(R.drawable.bg_edt_disable));
             isShowSubPhone = true;
-            tvShowHide.setText(getResources().getString(R.string.string_icon_arrow_up));
         }
     }
 
