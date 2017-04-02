@@ -13,6 +13,9 @@ import com.collalab.demoapp.R;
 import com.collalab.demoapp.adapter.TimePeriodAdapter;
 import com.collalab.demoapp.entity.ImportProductEntity;
 import com.collalab.demoapp.entity.PeriodTime;
+import com.collalab.demoapp.event.EventItemClick;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,9 +73,17 @@ public class FilterByConditionFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         timePeriodAdapter = new TimePeriodAdapter(getContext(), listPeriod);
+        timePeriodAdapter.setOnItemClick(onItemClick);
         recyclerView.setAdapter(timePeriodAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
+
+    TimePeriodAdapter.OnItemClick onItemClick = new TimePeriodAdapter.OnItemClick() {
+        @Override
+        public void onClick(int parentPos, int childPos) {
+            EventBus.getDefault().post(new EventItemClick());
+        }
+    };
 
     private void initDummy() {
         //Trong business day se la ham loc cac ket qua theo nam, quy, thang

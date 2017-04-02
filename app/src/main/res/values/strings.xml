@@ -25,6 +25,7 @@
     <string name="string_content">Nội dung</string>
     <string name="string_theo_doi">Theo dõi</string>
     <string name="string_thong_tin_lien_he">Thông tin liên hệ</string>
+    <string name="string_chi_tiet_ma_hang">Chi tiết mã hàng</string>
 
     <string-array name="themes_array">
         <item>Sand</item>

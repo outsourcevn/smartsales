@@ -27,6 +27,16 @@ public class TimePeriodAdapter extends ExpandableRecyclerAdapter<PeriodTime, Imp
     private LayoutInflater mInflater;
     private List<PeriodTime> mPeriodTimes;
 
+    OnItemClick onItemClick;
+
+    public void setOnItemClick(OnItemClick onItemClick) {
+        this.onItemClick = onItemClick;
+    }
+
+    public interface OnItemClick{
+        void onClick(int parentPos,int childPos);
+    }
+
     public TimePeriodAdapter(Context context, @NonNull List<PeriodTime> recipeList) {
         super(recipeList);
         mPeriodTimes = recipeList;
@@ -59,8 +69,16 @@ public class TimePeriodAdapter extends ExpandableRecyclerAdapter<PeriodTime, Imp
 
     @UiThread
     @Override
-    public void onBindChildViewHolder(@NonNull ImportProductViewHolder ingredientViewHolder, int parentPosition, int childPosition, @NonNull ImportProductEntity ingredient) {
+    public void onBindChildViewHolder(@NonNull ImportProductViewHolder ingredientViewHolder, final int parentPosition, final int childPosition, @NonNull ImportProductEntity ingredient) {
         ingredientViewHolder.bind(ingredient);
+        ingredientViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onItemClick != null) {
+                    onItemClick.onClick(parentPosition,childPosition);
+                }
+            }
+        });
     }
 
     @Override

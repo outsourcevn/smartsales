@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.entity.ImportProductEntity;
+import com.collalab.demoapp.event.EventItemClick;
 import com.collalab.demoapp.event.EventNhapHang;
 import com.collalab.demoapp.event.EventSelectYear;
 
@@ -132,7 +133,13 @@ public class FilterTimeFragment extends Fragment {
         if (adapter != null) {
             adapter.notifyDataSetChanged();
         }
+    }
 
+    @Subscribe
+    public void onEvent(EventItemClick eventItemClick) {
+        ChiTietMaHangFragment chiTietMaHangFragment = ChiTietMaHangFragment.newInstance("", "");
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container_year_quarter_month, chiTietMaHangFragment).addToBackStack(null).commit();
     }
 
     class ViewPagerAdapter extends FragmentStatePagerAdapter {

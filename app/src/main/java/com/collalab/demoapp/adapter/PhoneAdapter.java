@@ -1,8 +1,11 @@
 package com.collalab.demoapp.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.Settings;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.collalab.demoapp.R;
+import com.collalab.demoapp.entity.EventScan;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -69,9 +75,29 @@ public class PhoneAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (listPhone != null && listPhone.size() > position)
-                    listPhone.remove(position);
-                notifyItemRangeRemoved(position, 1);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                alertDialogBuilder.setTitle("Thông báo");
+                alertDialogBuilder
+                        .setMessage("Bạn có thực sự muốn xóa số điện thoại này khỏi danh sách không?")
+                        .setCancelable(false)
+                        .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (listPhone != null && listPhone.size() > position)
+                                    listPhone.remove(position);
+                                notifyItemRangeRemoved(position, 1);
+                            }
+                        })
+                        .setNegativeButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
         viewHolder.tvPhoneNum.setOnClickListener(new View.OnClickListener() {

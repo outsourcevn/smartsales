@@ -139,6 +139,12 @@ public class ListScanItemsFragment extends Fragment {
 
             if(scanAdapter != null) {
                 scanAdapter.notifyDataSetChanged();
+
+                if (mFilterType == TYPE_NOT_PROCESSED && listItem.size() > 0) {
+                    layoutProcessAll.setVisibility(View.VISIBLE);
+                } else {
+                    layoutProcessAll.setVisibility(View.GONE);
+                }
             }
         }
     }
@@ -208,6 +214,11 @@ public class ListScanItemsFragment extends Fragment {
         getItemByType();
         if(scanAdapter != null) {
             scanAdapter.notifyDataSetChanged();
+        }
+        if (mFilterType == TYPE_NOT_PROCESSED && listItem.size() > 0) {
+            layoutProcessAll.setVisibility(View.VISIBLE);
+        } else {
+            layoutProcessAll.setVisibility(View.GONE);
         }
     }
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.adapter.CodeYearAdapter;
 import com.collalab.demoapp.entity.ExportProductEntity;
+import com.collalab.demoapp.event.EventItemClick;
 import com.collalab.demoapp.event.EventSelectYear;
 
 import org.greenrobot.eventbus.EventBus;
@@ -92,6 +93,7 @@ public class CodeByYearFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
 
         codeYearAdapter = new CodeYearAdapter(getContext(), exportProductEntities);
+        codeYearAdapter.setOnItemClick(onItemClick);
         recyclerView.setAdapter(codeYearAdapter);
         if(exportProductEntities != null && exportProductEntities.size() > 0 && codeYearAdapter != null) {
             tvTotalNumberItem.setVisibility(View.VISIBLE);
@@ -155,6 +157,18 @@ public class CodeByYearFragment extends Fragment {
         calendar.set(Calendar.MONTH, 10);
         exportProductEntities.add(new ExportProductEntity(calendar.getTime(), 0, "15061994", false));
     }
+
+    CodeYearAdapter.OnItemClick onItemClick = new CodeYearAdapter.OnItemClick() {
+        @Override
+        public void onItemClick(int position) {
+            EventBus.getDefault().post(new EventItemClick());
+        }
+
+        @Override
+        public void onEditClick(int position) {
+
+        }
+    };
 
     @Override
     public void onDestroy() {
