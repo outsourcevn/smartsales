@@ -29,7 +29,7 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
     TraHangFragment traHangFragment;
     SettingFragment settingFragment;
     FilterTimeFragment filterTimeFragment;
-    android.support.v4.app.Fragment fragments[] = new Fragment[3];
+    android.support.v4.app.Fragment fragments[] = new Fragment[4];
     FragmentTransaction fragmentTransaction;
     FragmentManager fragmentManager;
 
@@ -56,7 +56,7 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-
+        addTabFragment(3);
         addTabFragment(2);
         addTabFragment(1);
         addTabFragment(0);
@@ -73,14 +73,14 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
                     fragments[1] = kichHoatFragment;
 //                    fragments[1] = filterTimeFragment;
                     break;
-//                case 2:
-//                    fragments[2] = banHangFragment;
-//                    break;
+                case 2:
+                    fragments[2] = filterTimeFragment;
+                    break;
 //                case 3:
 //                    fragments[3] = traHangFragment;
 //                    break;
-                case 2:
-                    fragments[2] = settingFragment;
+                case 3:
+                    fragments[3] = settingFragment;
                     break;
                 default:
                     break;
@@ -91,7 +91,7 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
             fragments[id].setUserVisibleHint(true);
         } else {
             fragmentTransaction = fragmentManager.beginTransaction();
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 4; i++) {
                 if (i == id) {
                     fragmentTransaction.show(fragments[i]);
                     fragments[i].setUserVisibleHint(true);
@@ -134,8 +134,10 @@ public class TabActivity extends AppCompatActivity implements OnTabSelectListene
 //                return 3;
             case R.id.action_kich_hoat:
                 return 1;
-            case R.id.action_cai_dat:
+            case R.id.action_loc_thoi_gian:
                 return 2;
+            case R.id.action_cai_dat:
+                return 3;
             default:
                 return 0;
         }

@@ -117,11 +117,11 @@ public class KichHoatFragment extends Fragment implements SwipeRefreshLayout.OnR
         }
     }
 
-    @OnClick(R.id.btn_filter_by_time)
+    @OnClick(R.id.btn_notification)
     public void onNotificationClick() {
-        FilterTimeFragment filterTimeFragment = FilterTimeFragment.newInstance("", "");
+        NotificationFragment notificationFragment = NotificationFragment.newInstance("", "");
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container_kich_hoat, filterTimeFragment).addToBackStack(null).commit();
+                .replace(R.id.fragment_container_kich_hoat, notificationFragment).addToBackStack(null).commit();
     }
 
     @OnClick(R.id.btn_add)

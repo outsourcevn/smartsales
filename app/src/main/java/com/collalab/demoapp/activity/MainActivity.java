@@ -11,6 +11,7 @@ import android.widget.EditText;
 import com.cengalabs.flatui.views.FlatToggleButton;
 import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
+import com.collalab.demoapp.fragment.BottomSheetContactFragment;
 import com.collalab.demoapp.persistence.PreferenceUtils;
 import com.collalab.demoapp.persistence.PrefsKey;
 import com.collalab.demoapp.widget.AwesomeFontTextView;
@@ -48,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
     public void onHideShowClick() {
         TransitionManager.beginDelayedTransition(layoutRegisterPhone);
         if (toggleButton.isChecked()) {
-            edtSubPhone.setVisibility(View.GONE);
             edtMainPhone.setEnabled(true);
-            edtMainPhone.setBackground(getResources().getDrawable(R.drawable.bg_edt_rounded_white_solid));
+            edtMainPhone.setBackgroundResource(R.drawable.bg_edt_rounded_white_solid);
+            edtSubPhone.setBackgroundResource(R.drawable.bg_edt_disable);
             isShowSubPhone = false;
         } else {
-            edtSubPhone.setVisibility(View.VISIBLE);
             edtMainPhone.setEnabled(false);
-            edtMainPhone.setBackground(getResources().getDrawable(R.drawable.bg_edt_disable));
+            edtMainPhone.setBackgroundResource(R.drawable.bg_edt_disable);
+            edtSubPhone.setBackgroundResource(R.drawable.bg_edt_rounded_white_solid);
             isShowSubPhone = true;
         }
     }
@@ -79,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.tv_contact)
     public void onContactClick() {
-
+        BottomSheetContactFragment bottomSheetDialogFragment = new BottomSheetContactFragment();
+        bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
     }
 
     private boolean invalidate() {

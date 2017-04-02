@@ -27,7 +27,7 @@ public class PeriodTimeViewHolder extends ParentViewHolder {
     }
 
     public void bind(@NonNull PeriodTime periodTime) {
-        mPeriodTimeTextView.setText(periodTime.getName());
+        mPeriodTimeTextView.setText(periodTime.getName() + " - 2 lần");
     }
 
     @SuppressLint("NewApi")

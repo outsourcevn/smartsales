@@ -25,6 +25,16 @@ public class Common {
         return "";
     }
 
+    public static String getDateInStringHHMM(Date date) {
+        if (date != null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            return sdf.format(calendar.getTime());
+        }
+        return "";
+    }
+
     private static void hideKeyBoard(Context context, View view) {
         if (context == null || view == null) {
             return;

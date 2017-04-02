@@ -9,4 +9,6 @@ public class EventScan {
     public boolean success;
     public boolean isImportProcess;
     public String processType;
+    public double lat,lng;
+    public String address;
 }

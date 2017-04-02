@@ -54,6 +54,7 @@ dependencies {
     compile 'com.github.pwittchen:networkevents:2.1.6'
     compile 'com.bignerdranch.android:expandablerecyclerview:3.0.0-RC1'
     compile 'com.zaaach:toprightmenu:1.0'
+    compile 'io.nlopez.smartlocation:library:3.3.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }

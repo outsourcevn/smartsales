@@ -27,12 +27,12 @@
     <!--android:icon="@drawable/ic_shopping_cart_white_24dp"-->
     <!--android:title="@string/string_ban_hang"-->
     <!--app:showAsAction="ifRoom" />-->
-    <!--<item-->
-    <!--android:id="@+id/action_nhan_hang_tra"-->
-    <!--android:enabled="true"-->
-    <!--android:icon="@drawable/ic_return_goods_white_24dp"-->
-    <!--android:title="@string/string_nhan_hang_tra"-->
-    <!--app:showAsAction="ifRoom" />-->
+    <item
+    android:id="@+id/action_loc_thoi_gian"
+    android:enabled="true"
+    android:icon="@drawable/ic_filter_white_24dp"
+    android:title="@string/string_loc_thoi_gian"
+    app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_cai_dat"
         android:enabled="true"

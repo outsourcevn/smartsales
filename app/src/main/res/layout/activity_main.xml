@@ -90,6 +90,7 @@
         <EditText
             android:id="@+id/edt_sub_phone"
             style="@style/EditTextStyle"
+            android:background="@drawable/bg_edt_disable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edt_main_phone"
@@ -100,7 +101,7 @@
             android:inputType="phone"
             android:padding="8dp"
             android:textSize="15dp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
     </RelativeLayout>
 

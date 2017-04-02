@@ -8,6 +8,7 @@
     <string name="string_ban_hang">Bán hàng</string>
     <string name="string_nhan_hang_tra">Trả hàng</string>
     <string name="string_nhan_hang_tra_long">Nhận hàng trả</string>
+    <string name="string_loc_thoi_gian">Lọc thời gian</string>
     <string name="string_cai_dat">Cài đặt</string>
     <string name="string_retail_client">Khách lẻ</string>
     <string name="string_notification">Thông báo</string>
@@ -23,6 +24,7 @@
     <string name="string_filter_by_time">Lọc thời gian</string>
     <string name="string_content">Nội dung</string>
     <string name="string_theo_doi">Theo dõi</string>
+    <string name="string_thong_tin_lien_he">Thông tin liên hệ</string>
 
     <string-array name="themes_array">
         <item>Sand</item>

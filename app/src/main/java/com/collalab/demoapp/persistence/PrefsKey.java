@@ -12,7 +12,9 @@ public class PrefsKey {
     public static String KEY_IS_MAIN_NUMBER = "key_is_main_number";
     public static String KEY_MAIN_NUMBER = "key_main_number";
     public static String KEY_STORE_IMG = "key_store_img";
+    public static String KEY_STORE_IMG_CREATED_AT = "key_store_img_created_at";
     public static String KEY_ADDRESS = "key_address";
     public static String KEY_ID_NUM = "key_id_num";
     public static String KEY_CONTRACT_STATUS = "key_contract_status";
+    public static String KEY_IMAGE_LOCATION = "key_image_location";
 }

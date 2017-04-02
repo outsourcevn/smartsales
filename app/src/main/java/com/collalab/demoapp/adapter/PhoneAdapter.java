@@ -29,7 +29,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public PhoneAdapter(Context context, ArrayList<String> listPhone, boolean isMainUser) {
         this.context = context;
         this.listPhone = listPhone;
-        this.isMainUser = isMainUser;
+        this.isMainUser = true; //TODO cái này để force show delete phone, nếu chạy product thì phải truyền vào biến xác định
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

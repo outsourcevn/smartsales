@@ -9,9 +9,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import com.collalab.demoapp.R;
 import com.collalab.demoapp.adapter.ScanAdapter;
 import com.collalab.demoapp.entity.EventScan;
 import com.collalab.demoapp.entity.ScanItem;
+import com.collalab.demoapp.event.EventListItemScan;
 import com.zaaach.toprightmenu.MenuItem;
 import com.zaaach.toprightmenu.TopRightMenu;
 
@@ -30,6 +33,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,11 +52,13 @@ public class QuetVaLietKeFragment extends Fragment {
     @BindView(R.id.btn_add)
     View btnMore;
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
-    private LinearLayoutManager mLayoutManager;
-    ScanAdapter scanAdapter;
     ArrayList<ScanItem> listItem = new ArrayList<>();
+
+    @BindView(R.id.tabs)
+    TabLayout tabLayout;
+    @BindView(R.id.viewpager)
+    ViewPager viewPager;
+    LietKeViewPagerAdapter lietKeViewPagerAdapter;
 
     private TopRightMenu mTopRightMenu;
     private boolean showIcon = true;
@@ -98,17 +104,10 @@ public class QuetVaLietKeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mLayoutManager = new LinearLayoutManager(getContext());
-        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(mLayoutManager);
 
-        scanAdapter = new ScanAdapter(getContext(), listItem);
-        scanAdapter.setOnScanItemAction(onScanItemAction);
-        recyclerView.setAdapter(scanAdapter);
-
-        if (listItem.size() == 0) {
-            scanAdapter.hideFooter();
-        }
+        lietKeViewPagerAdapter = new LietKeViewPagerAdapter(getChildFragmentManager());
+        viewPager.setAdapter(lietKeViewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @OnClick(R.id.btn_back)
@@ -143,7 +142,7 @@ public class QuetVaLietKeFragment extends Fragment {
                 .setOnMenuItemClickListener(new TopRightMenu.OnMenuItemClickListener() {
                     @Override
                     public void onMenuItemClick(int position) {
-                        if(position == 0) {
+                        if (position == 0) {
                             ScanCodeFragment scanCodeFragment = ScanCodeFragment.newInstance(true);
                             getActivity().getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.layout_quet_liet_ke_container, scanCodeFragment).addToBackStack(null).commit();
@@ -158,29 +157,6 @@ public class QuetVaLietKeFragment extends Fragment {
 
     }
 
-    ScanAdapter.OnScanItemAction onScanItemAction = new ScanAdapter.OnScanItemAction() {
-        @Override
-        public void onSendSMS(int position) {
-            ScanItem scanItem = listItem.get(position);
-            listItem.get(position).setSuccess(true);
-            listItem.get(position).setProcessType("sms");
-            scanAdapter.notifyDataSetChanged();
-        }
-
-        @Override
-        public void onSendInternet(int position) {
-            ScanItem scanItem = listItem.get(position);
-            if (isConnected()) {
-                Toast.makeText(getContext(), "Đã gửi thành công mã " + scanItem.getCode() + "!", Toast.LENGTH_SHORT).show();
-                listItem.get(position).setSuccess(true);
-                listItem.get(position).setProcessType("internet");
-                scanAdapter.notifyDataSetChanged();
-            } else {
-                Toast.makeText(getContext(), "Không có kết nối mạng, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
-            }
-        }
-    };
-
     @Subscribe
     public void onEvent(EventScan eventScan) {
         ScanItem scanItem = new ScanItem();
@@ -188,11 +164,15 @@ public class QuetVaLietKeFragment extends Fragment {
         scanItem.setImportProcess(eventScan.isImportProcess);
         scanItem.setSuccess(eventScan.success);
         scanItem.setProcessType(eventScan.processType);
+        scanItem.setLat(eventScan.lat);
+        scanItem.setLng(eventScan.lng);
+        scanItem.setAddress(eventScan.address);
+        scanItem.setCreated_at(new Date());
         listItem.add(scanItem);
-        if (listItem.size() > 0) {
-            scanAdapter.hideFooter();
-        }
-        scanAdapter.notifyDataSetChanged();
+        EventListItemScan eventListItemScan = new EventListItemScan();
+        eventListItemScan.listScanItems = listItem;
+        eventListItemScan.sentFrom = QuetVaLietKeFragment.class.getSimpleName();
+        EventBus.getDefault().postSticky(eventListItemScan);
     }
 
     public boolean isConnected() {
@@ -206,6 +186,46 @@ public class QuetVaLietKeFragment extends Fragment {
     public void onDestroy() {
         EventBus.getDefault().unregister(this);
         super.onDestroy();
+    }
+
+    class LietKeViewPagerAdapter extends FragmentStatePagerAdapter {
+
+        public LietKeViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    ListScanItemsFragment allFragment = ListScanItemsFragment.newInstance(ListScanItemsFragment.TYPE_ALL);
+                    return allFragment;
+                case 1:
+                    ListScanItemsFragment notProcessFragment = ListScanItemsFragment.newInstance(ListScanItemsFragment.TYPE_NOT_PROCESSED);
+                    return notProcessFragment;
+                case 2:
+                    ListScanItemsFragment processedFragment = ListScanItemsFragment.newInstance(ListScanItemsFragment.TYPE_PROCESSED);
+                    return processedFragment;
+            }
+            return new Fragment();
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if (position == 0) {
+                return "Tất cả";
+            } else if (position == 1) {
+                return "Chưa xử lý";
+            } else if (position == 2) {
+                return "Đã xử lý";
+            }
+            return "";
+        }
     }
 
 }

@@ -8,14 +8,18 @@
         icon="@drawable/ic_store_white_24dp"
         id="@+id/action_kich_hoat"
         title="@string/string_kich_hoat" />
+    <tab
+        icon="@drawable/ic_filter_white_24dp"
+        id="@+id/action_loc_thoi_gian"
+        title="@string/string_loc_thoi_gian" />
     <!--<tab-->
-        <!--icon="@drawable/ic_shopping_cart_white_24dp"-->
-        <!--id="@+id/action_ban_hang"-->
-        <!--title="@string/string_ban_hang" />-->
+    <!--icon="@drawable/ic_shopping_cart_white_24dp"-->
+    <!--id="@+id/action_ban_hang"-->
+    <!--title="@string/string_ban_hang" />-->
     <!--<tab-->
-        <!--icon="@drawable/ic_return_goods_white_24dp"-->
-        <!--id="@+id/action_nhan_hang_tra"-->
-        <!--title="@string/string_nhan_hang_tra" />-->
+    <!--icon="@drawable/ic_return_goods_white_24dp"-->
+    <!--id="@+id/action_nhan_hang_tra"-->
+    <!--title="@string/string_nhan_hang_tra" />-->
     <tab
         icon="@drawable/ic_settings_white_24dp"
         id="@+id/action_cai_dat"

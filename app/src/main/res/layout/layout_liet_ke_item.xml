@@ -32,6 +32,34 @@
         android:textColor="@color/color_353535"
         android:textSize="15dp" />
 
+    <TextView
+        android:id="@+id/tv_created_at"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_status"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/layout_delete_edit"
+        android:text="Quét lúc: "
+        android:textColor="@color/color_353535"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_created_at"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/layout_delete_edit"
+        android:text="Quét tại:"
+        android:textColor="@color/color_353535"
+        android:textSize="15dp" />
+
     <LinearLayout
         android:id="@+id/layout_delete_edit"
         android:layout_width="wrap_content"
@@ -63,7 +91,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_below="@+id/layout_delete_edit"
+        android:layout_below="@+id/tv_address"
         android:layout_marginTop="3dp"
         android:background="#d2d2d2" />
 

@@ -2,11 +2,13 @@ package com.collalab.demoapp.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.collalab.demoapp.Common;
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.entity.ScanItem;
 
@@ -51,6 +53,10 @@ public class ScanAdapter extends AdapterFooterView {
         View btnDelete;
         @BindView(R.id.btn_send_internet)
         View btnSendInternet;
+        @BindView(R.id.tv_created_at)
+        TextView tvCreatedAt;
+        @BindView(R.id.tv_address)
+        TextView tvAddress;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -89,6 +95,12 @@ public class ScanAdapter extends AdapterFooterView {
                 }
             }
         });
+        viewHolder.tvCreatedAt.setText("Quét lúc:" + Common.getDateInStringHHMM(scanItem.getCreated_at()));
+        if(!TextUtils.isEmpty(scanItem.getAddress())) {
+            viewHolder.tvAddress.setText("Quét tại:" + scanItem.getAddress());
+        } else {
+            viewHolder.tvAddress.setText("Quét tại" + "Latitude: " + scanItem.getLat() + " Longtitude: " + scanItem.getLng());
+        }
     }
 
     @Override

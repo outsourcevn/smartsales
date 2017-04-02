@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.collalab.demoapp.R;
 import com.collalab.demoapp.adapter.CodeYearAdapter;
@@ -35,6 +36,11 @@ public class CodeByYearFragment extends Fragment {
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     private LinearLayoutManager mLayoutManager;
+
+    @BindView(R.id.tv_total_item)
+    TextView tvTotalNumberItem;
+    @BindView(R.id.view_divider)
+    View dividerView;
 
     public CodeByYearFragment() {
         // Required empty public constructor
@@ -87,12 +93,28 @@ public class CodeByYearFragment extends Fragment {
 
         codeYearAdapter = new CodeYearAdapter(getContext(), exportProductEntities);
         recyclerView.setAdapter(codeYearAdapter);
+        if(exportProductEntities != null && exportProductEntities.size() > 0 && codeYearAdapter != null) {
+            tvTotalNumberItem.setVisibility(View.VISIBLE);
+            dividerView.setVisibility(View.VISIBLE);
+            tvTotalNumberItem.setText("Tổng số: " + exportProductEntities.size());
+        } else {
+            tvTotalNumberItem.setVisibility(View.GONE);
+            dividerView.setVisibility(View.GONE);
+        }
     }
 
     @Subscribe
     public void onEvent(EventSelectYear eventSelectYear) {
         yearSelected = Integer.valueOf(eventSelectYear.selectedYear);
         initDummyData();
+        if(exportProductEntities != null && exportProductEntities.size() > 0 && codeYearAdapter != null) {
+            tvTotalNumberItem.setVisibility(View.VISIBLE);
+            dividerView.setVisibility(View.VISIBLE);
+            tvTotalNumberItem.setText("Tổng số: " + exportProductEntities.size());
+        } else {
+            tvTotalNumberItem.setVisibility(View.GONE);
+            dividerView.setVisibility(View.GONE);
+        }
         codeYearAdapter.notifyDataSetChanged();
     }
 
